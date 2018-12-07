@@ -64,9 +64,6 @@ message KeyInfo {
 |mavl-f3d-round-end|轮次结束|存储结束的轮次信息|
 |mavl-f3d-last-round|当前轮次|保存当前轮次||
 |mavl-f3d-key-price:{round}|钥匙价格|存储最后一把钥匙的价格|
-
-|键|值|用途|说明|
-|-|-|-|-|
 |mavl-f3d-buy-key:{round}:{addr}:{index}|key信息|存储每笔交易key的信息|
 
 ### 1.1.3. 本地存储 LocalDB
