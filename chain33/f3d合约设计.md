@@ -114,7 +114,7 @@ message F3dLuckyDraw {
     int64 Round  = 1;
 }
 
-message GameCancel {
+message  {
     // 用户本次买的key的数量
     int64 keyNum = 3;
 }
