@@ -42,9 +42,41 @@ message RoundInfo {
 
 用户买票存储
 
+**每笔交易中的Key信息：**
+```protobuf
+message KeyInfo {
+    // 游戏轮次  (是由系统合约填写后存储）
+    int64 round = 1;
+      
+    // 本次购买key的价格 (是由系统合约填写后存储）
+    int64 keyPrice = 2;  
+    
+    // 用户本次买的key的数量
+    int64 keyCount = 3;
+    
+    // 用户地址 (是由系统合约填写后存储）
+    string addr = 4;
+    
+    // 本次买key总共花费多少
+    int64 totalCost = 5
+    
+    // bonus 奖金
+    int64 bonus = 6
+    
+    // 交易确认存储时间（被打包的时间）
+    int64 buyKeyTime = 7;
+    
+    // 开奖时间（被打包的时间）
+    int64 luckyDrawTime = 8;
+    
+}
+```
+
 |键|值|用途|说明|
 |-|-|-|-|
-|LODB-f3d-buy:{round}|{addr}|游戏轮数|用户地址|
+|LODB-f3d-buy:{round}:{addr}|记录用户买票信息|游戏轮数|用户地址|
+|LODB-f3d-buy:{round}:{addr}:{index}|key信息|记录用户买的钥匙的具体信息|变参为游戏轮次，用户地址，index|
+|LODB-f3d-buy:{round}:{addr}|记录用户买票信息|游戏轮数|用户地址|
 
 
 
