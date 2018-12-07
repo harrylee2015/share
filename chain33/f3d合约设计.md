@@ -25,7 +25,9 @@ message RoundInfo {
     int64 keyCount = 9;
 }
 ```
+
 **每笔交易中的Key信息：**
+
 ```protobuf
 message KeyInfo {
     // 游戏轮次  (是由系统合约填写后存储）
@@ -127,8 +129,9 @@ message GameCancel {
 
 
 **对外查询接口设计：**
-```protobuf
 
+f3d round 信息查询
+``` protobuf
 // 查询f3d 游戏信息,这里面其实包含了key的最新价格信息
 message QueryF3dByRound {
     //轮次，默认查询最新的
@@ -143,9 +146,11 @@ message QueryF3dListByRound {
     // 0降序，1升序，默认降序
     int32 direction = 5;
 }
-
 ```
 
+**买的钥匙key信息记录查询**
+
+```protobuf
 // key 信息查询
 message QueryKeysByRoundAndAddr {
     //轮次,必填参数
@@ -153,7 +158,6 @@ message QueryKeysByRoundAndAddr {
     //用户地址
     string addr = 2;
 }
-
 // 用户key数量查询
 message QueryKeyCountByRoundAndAddr {
     //轮次,必填参数
@@ -161,8 +165,11 @@ message QueryKeyCountByRoundAndAddr {
     //用户地址
     string addr = 2;
 }
+```
 
-// 内部索引value值
+**内部索引value值**
+
+``` protobuf
 message F3dRecord {
     //用户地址
     string addr = 1;
@@ -171,8 +178,10 @@ message F3dRecord {
     //round
     int64  round = 3;
 }
+```
 
-//响应数据
+**响应数据**
+``` protobuf
 //f3d round查询返回数据 
 message ReplyF3dList {
     repeated RoundInfo rounds = 1;
@@ -195,7 +204,6 @@ message ReplyKeyCount {
     int64 count = 1;
 }
 
-
 //合约内部日志记录，待补全
 message ReceiptF3d {
     string addr = 1;
@@ -203,6 +211,7 @@ message ReceiptF3d {
     int64  index      = 3;
    .....
 }
+```
 
 
 
