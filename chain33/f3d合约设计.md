@@ -25,23 +25,6 @@ message RoundInfo {
     int64 keyCount = 9;
 }
 ```
-
-### 1.1.2. 链上存储 StateDB
-|键|值|用途|说明|
-|-|-|-|-|
-|mavl-f3d-user-keys:{round}:{addr}|钥匙把数|某一轮游戏中用户持有的钥匙数|记录游戏参与者持有的钥匙数目，变参为游戏轮次和用户地址|
-|mavl-f3d-round-start|轮次开始|存储开始的轮次信息|
-|mavl-f3d-round-end|轮次结束|存储结束的轮次信息|
-|mavl-f3d-last-round|当前轮次|保存当前轮次||
-|mavl-f3d-key-price:{round}|钥匙价格|存储最后一把钥匙的价格|
-
-### 1.1.3. 本地存储 LocalDB
-|键|值|用途|说明|
-|-|-|-|-|
-|LODB-f3d-round-info:{round}|RoundInfo|保存每一个轮次的游戏信息||
-
-用户买票存储
-
 **每笔交易中的Key信息：**
 ```protobuf
 message KeyInfo {
@@ -69,14 +52,38 @@ message KeyInfo {
     // 开奖时间（被打包的时间）
     int64 luckyDrawTime = 8;
     
+    //买票的txHash
+    string buyKeyTxHash = 9;
+    
+    //开奖的txHash
+    string luckyDrawTxHash = 10；
+    
 }
 ```
 
+### 1.1.2. 链上存储 StateDB
 |键|值|用途|说明|
 |-|-|-|-|
-|LODB-f3d-buy:{round}:{addr}|记录用户买票信息|游戏轮数|用户地址|
-|LODB-f3d-buy:{round}:{addr}:{index}|key信息|记录用户买的钥匙的具体信息|变参为游戏轮次，用户地址，index|
-|LODB-f3d-buy:{round}:{addr}|记录用户买票信息|游戏轮数|用户地址|
+~~|mavl-f3d-user-keys:{round}:{addr}|钥匙把数|某一轮游戏中用户持有的钥匙数|记录游戏参与者持有的钥匙数目，变参为游戏轮次和用户地址|~~
+|mavl-f3d-round-start|轮次开始|存储开始的轮次信息|
+|mavl-f3d-round-end|轮次结束|存储结束的轮次信息|
+|mavl-f3d-last-round|当前轮次|保存当前轮次||
+|mavl-f3d-key-price:{round}|钥匙价格|存储最后一把钥匙的价格|
+|键|值|用途|说明|
+|-|-|-|-|
+|mavl-f3d-buy-key:{round}:{addr}:{index}|key信息|存储每笔交易key的信息|
+
+### 1.1.3. 本地存储 LocalDB
+|键|值|用途|说明|
+|-|-|-|-|
+|LODB-f3d-round-info:{round}|RoundInfo|保存每一个轮次的游戏信息||
+
+用户买票存储
+
+|键|值|用途|说明|
+|-|-|-|-|
+|LODB-f3d-buy:{round}:{addr}:{index}|index,addr信息|记录用户每次买key存储在stateDB上的，key中的index|变参为游戏轮次，用户地址，index|
+
 
 
 
