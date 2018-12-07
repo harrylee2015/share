@@ -64,11 +64,12 @@ message KeyInfo {
 ### 1.1.2. 链上存储 StateDB
 |键|值|用途|说明|
 |-|-|-|-|
-~~|mavl-f3d-user-keys:{round}:{addr}|钥匙把数|某一轮游戏中用户持有的钥匙数|记录游戏参与者持有的钥匙数目，变参为游戏轮次和用户地址|~~
+|mavl-f3d-user-keys:{round}:{addr}|钥匙把数|某一轮游戏中用户持有的钥匙数|记录游戏参与者持有的钥匙数目，变参为游戏轮次和用户地址|
 |mavl-f3d-round-start|轮次开始|存储开始的轮次信息|
 |mavl-f3d-round-end|轮次结束|存储结束的轮次信息|
 |mavl-f3d-last-round|当前轮次|保存当前轮次||
 |mavl-f3d-key-price:{round}|钥匙价格|存储最后一把钥匙的价格|
+
 |键|值|用途|说明|
 |-|-|-|-|
 |mavl-f3d-buy-key:{round}:{addr}:{index}|key信息|存储每笔交易key的信息|
@@ -85,7 +86,11 @@ message KeyInfo {
 |LODB-f3d-buy:{round}:{addr}:{index}|index,addr信息|记录用户每次买key存储在stateDB上的，key中的index|变参为游戏轮次，用户地址，index|
 
 
+**问题点**
+1. 如果每笔买入key的交易信息都上链，存储在stateDB中，做到可溯源的话，存储的数据会比较多
 
+2. 当开奖交易触发时，需要更改stateDB中之前每笔买Key的bonus等字段信息，需要通过localDB list 辅助去查询更改，极端情况下，如果买的人很多的话，
+  为了系统的安全，需要分多次去查，然后分批处理，这样会不会影响性能？
 
 
 ## 1.2. 接口设计
