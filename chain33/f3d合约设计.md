@@ -23,6 +23,8 @@ message RoundInfo {
     int64 userCount = 8;
     // 本轮游戏募集到的key个数
     int64 keyCount = 9;
+    //距离开奖剩余时间
+    int64 remainTime = 10;
 }
 ```
 
@@ -45,20 +47,11 @@ message KeyInfo {
     // 本次买key总共花费多少
     int64 totalCost = 5
     
-    // bonus 奖金
-    int64 bonus = 6
-    
     // 交易确认存储时间（被打包的时间）
-    int64 buyKeyTime = 7;
-    
-    // 开奖时间（被打包的时间）
-    int64 luckyDrawTime = 8;
+    int64 buyKeyTime = 6; 
     
     //买票的txHash
-    string buyKeyTxHash = 9;
-    
-    //开奖的txHash
-    string luckyDrawTxHash = 10；
+    string buyKeyTxHash = 7;
     
 }
 ```
@@ -91,8 +84,10 @@ message KeyInfo {
 **问题点**
 1. 如果每笔买入key的交易信息都上链，存储在stateDB中，做到可溯源的话，存储的数据会比较多
 
-2. 当开奖交易触发时，需要更改stateDB中之前每笔买Key的bonus等字段信息，需要通过localDB list 辅助去查询更改，极端情况下，如果买的人很多的话，
+~~2. 当开奖交易触发时，需要更改stateDB中之前每笔买Key的bonus等字段信息，需要通过localDB list 辅助去查询更改，极端情况下，如果买的人很多的话，
   为了系统的安全，需要分多次去查，然后分批处理，这样会不会影响性能？ 可以考虑把这个bonus去掉，这样不用二次写入
+  
+  3.不用去二次更改，只存一次
 
 
 ## 1.2. 接口设计
