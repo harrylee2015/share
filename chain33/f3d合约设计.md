@@ -35,7 +35,7 @@ message KeyInfo {
     int64 keyPrice = 2;  
     
     // 用户本次买的key的数量
-    int64 keyCount = 3;
+    int64 keyNum = 3;
     
     // 用户地址 (是由系统合约填写后存储）
     string addr = 4;
@@ -94,6 +94,122 @@ message KeyInfo {
 
 
 ## 1.2. 接口设计
+
+
+
+**tx中构造action设计：**
+```protobuf
+// message for execs.f3d
+message F3dAction {
+    oneof value {
+        F3dStart start = 1;
+        F3dLuckyDraw draw = 2;
+        F3dBuyKey  buy  = 3;
+    }
+    int32 ty = 4;
+}
+
+message F3dStart {
+    //轮次，这个填不填不重要，合约里面会自动校验的
+    int64 Round  = 1;
+}
+
+message F3dLuckyDraw {
+    //轮次，这个填不填不重要，合约里面会自动校验的
+    int64 Round  = 1;
+}
+
+message GameCancel {
+    // 用户本次买的key的数量
+    int64 keyNum = 3;
+}
+```
+
+
+**对外查询接口设计：**
+```protobuf
+
+// 查询f3d 游戏信息,这里面其实包含了key的最新价格信息
+message QueryF3dByRound {
+    //轮次，默认查询最新的
+    int64 round = 1;
+}
+
+message QueryF3dListByRound {
+    //轮次，默认查询最新的
+    int64 startRound = 1;
+    //单页返回多少条记录，默认返回10条，单次最多返回50条
+    int32 count = 2;
+    // 0降序，1升序，默认降序
+    int32 direction = 5;
+}
+
+```
+
+// key 信息查询
+message QueryKeysByRoundAndAddr {
+    //轮次,必填参数
+    int64 round = 1;
+    //用户地址
+    string addr = 2;
+}
+
+// 用户key数量查询
+message QueryKeyCountByRoundAndAddr {
+    //轮次,必填参数
+    int64 round = 1;
+    //用户地址
+    string addr = 2;
+}
+
+// 内部索引value值
+message F3dRecord {
+    //用户地址
+    string addr = 1;
+    //index
+    int64  index  = 2;
+    //round
+    int64  round = 3;
+}
+
+//响应数据
+//f3d round查询返回数据 
+message ReplyF3dList {
+    repeated RoundInfo rounds = 1;
+}
+
+message ReplyF3d {
+    RoundInfo round = 1;
+}
+
+//用户查询买的key信息返回数据
+message ReplyKeyList {
+    repeated KeyInfo keys = 1;
+}
+
+message ReplyKey {
+    KeyInfo key = 1;
+}
+
+message ReplyKeyCount {
+    int64 count = 1;
+}
+
+
+//合约内部日志记录，待补全
+message ReceiptF3d {
+    string addr = 1;
+    int64  round = 2;
+    int64  index      = 3;
+   .....
+}
+
+
+
+
+
+
+
 ### 1.2.1. 全局接口
 #### 1.2.1.1. 获取游戏轮次信息 GetGameRounds
 **请求结构：**
