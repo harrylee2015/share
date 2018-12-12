@@ -25,6 +25,8 @@ message RoundInfo {
     int64 keyCount = 9;
     //距离开奖剩余时间
     int64 remainTime = 10;
+    //最近一次更新时间
+    int64 updateTime = 11;
 }
 ```
 
@@ -44,14 +46,14 @@ message KeyInfo {
     // 用户地址 (是由系统合约填写后存储）
     string addr = 4;
     
-    // 本次买key总共花费多少
-    int64 totalCost = 5
-    
     // 交易确认存储时间（被打包的时间）
-    int64 buyKeyTime = 6; 
+    int64 buyKeyTime = 5; 
     
     //买票的txHash
-    string buyKeyTxHash = 7;
+    string buyKeyTxHash = 6;
+    
+    //index 
+    int64 index =7;
     
 }
 ```
@@ -60,23 +62,14 @@ message KeyInfo {
 |键|值|用途|说明|
 |-|-|-|-|
 |mavl-f3d-user-keys:{round}:{addr}|钥匙把数|某一轮游戏中用户持有的钥匙数|记录游戏参与者持有的钥匙数目，变参为游戏轮次和用户地址|
-|mavl-f3d-round-start|轮次开始|存储开始的轮次信息|
-|mavl-f3d-round-end|轮次结束|存储结束的轮次信息|
 |mavl-f3d-last-round|当前轮次|保存当前轮次||
-|mavl-f3d-key-price:{round}|钥匙价格|存储最后一把钥匙的价格|
 |mavl-f3d-buy-key:{round}:{addr}:{index}|key信息|存储每笔交易key的信息|
 
 ### 1.1.3. 本地存储 LocalDB
 |键|值|用途|说明|
 |-|-|-|-|
-|LODB-f3d-round-info:{round}|RoundInfo|保存每一个轮次的游戏信息||
-
-用户买票存储
-
-|键|值|用途|说明|
-|-|-|-|-|
 |LODB-f3d-buy:{round}:{addr}:{index}|index,addr信息|记录用户每次买key存储在stateDB上的，key中的index|变参为游戏轮次，用户地址，index|
-
+|LODB-f3d-AddrInfos:{round}|{addr}|分页记录哪些地址买过key|变参为游戏轮次，用户地址|
 
 **问题点**
 1. 如果每笔买入key的交易信息都上链，存储在stateDB中，做到可溯源的话，存储的数据会比较多
@@ -145,7 +138,7 @@ message QueryF3dListByRound {
 
 ```protobuf
 // key 信息查询
-message QueryKeysByRoundAndAddr {
+message QueryBuyRecordByRoundAndAddr {
     //轮次,必填参数
     int64 round = 1;
     //用户地址
@@ -334,13 +327,13 @@ f3d.manager = 14KEKbYtKKQm4wMthSK9J4La4nAiidGozt
 f3d.developer = 12qyocayNF7Lv6C9qW4avxs2E7U41fKSfv
 
 # 超级大奖分成百分比
-f3d.bonus.winner = 40
+f3d.bonus.winner = 0.4
 
 # 参与者分红百分比
-f3d.bonus.key = 30
+f3d.bonus.key = 0.3
 
 # 滚动到下期奖金池百分比
-f3d.bonus.pool = 20
+f3d.bonus.pool = 0.2
 
 # 平台运营及开发者费用百分比
 f3d.bonus.developer = 10
@@ -354,7 +347,10 @@ f3d.time.key = 30
 # 一次购买钥匙最多延长的游戏时间（单位：秒）
 f3d.time.maxkey = 300
 
-# 钥匙涨价幅度（下一个人购买钥匙时在上一把钥匙基础上浮动幅度百分比），范围1-100
-f3d.key.price.incr=10
+# 钥匙涨价幅度（下一个人购买钥匙时在上一把钥匙基础上浮动幅度百分比），范围0-1
+f3d.key.price.incr= 0.1
+
+# 钥匙初始价格
+f3d.key.startPrice = 0.1
 ```
 
