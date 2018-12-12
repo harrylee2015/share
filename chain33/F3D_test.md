@@ -1,6 +1,6 @@
 ## F3D游戏玩法测试
 
-### 1.准备工作分别给manage地址和测试地址打钱，并奖 测试地址中的一部分钱转到f3d合约下面
+### 1.准备工作分别给manage地址和测试地址打钱，并将测试地址中的一部分钱转到f3d合约下面
 
 ``` bash
 harry@harry-VirtualBox:~/chain33Test$ ./chain33-cli bty transfer -a 10000 -t 16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh
