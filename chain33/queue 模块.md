@@ -5,7 +5,7 @@
 - [queue模块](#mempool模块)
     - [1. 模块介绍](#1-模块介绍)
     - [2. 逻辑架构及上下文](#2-逻辑架构及上下文)
-    - [3. queue和client 数据结构](#3-queue和client 数据结构)
+    - [3. queue和client数据结构](#3-queue和client数据结构)
     - [4. mempool存储的数据结构](#4-mempool存储的数据结构)
     - [5. mempool消息处理逻辑](#5-mempool消息处理逻辑)
     - [6. mempool提供的接口](#6-mempool提供的接口)
@@ -35,7 +35,7 @@
 >  4.  exector和rpc模块各自都额外实例化一个QueueProtocol
 
 
-## 3. queue和client 数据结构
+## 3. queue和client数据结构
 
 > queue 中主要定义了三种数据结构，queue, client, Message
 >
