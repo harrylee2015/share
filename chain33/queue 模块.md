@@ -6,9 +6,11 @@
     - [1. 模块介绍](#1-模块介绍)
     - [2. 逻辑架构及上下文](#2-逻辑架构及上下文)
     - [3. queue和client数据结构](#3-queue和client数据结构)
-    - [4. mempool存储的数据结构](#4-mempool存储的数据结构)
-    - [5. mempool消息处理逻辑](#5-mempool消息处理逻辑)
-    - [6. mempool提供的接口](#6-mempool提供的接口)
+        - [3.1 queue的数据结构和接口](#31-queue的数据结构和接口)
+	- [3.2 chanSub订阅通道和Message](#32-chanSub订阅通道和Message)
+	- [3.3 Client数据结构和接口](#33-Client数据结构和接口)
+	- [3.4 Module接口](#34-Module接口)
+    - [4. chain33中queue的使用](#4-chain33中queue的使用)
 
 <!-- /TOC -->
 
@@ -134,7 +136,7 @@ type Client interface {
 ```
 
 
-### 3.4 Module 接口
+### 3.4 Module接口
 
 > chain33中所有模块都实现了Module接口
 > 其中SetQueueClient()方法主要功能是设置订阅主题，根据业务处理自己订阅的Msg并返回.
