@@ -6,10 +6,10 @@
     - [1. 模块介绍](#1-模块介绍)
     - [2. 逻辑架构及上下文](#2-逻辑架构及上下文)
     - [3. queue和client数据结构](#3-queue和client数据结构)
-        -[3.1 queue的数据结构和接口](#31-queue的数据结构和接口)
-	-[3.2 chanSub订阅通道和Message](#32-chanSub订阅通道和Message)
-	-[3.3 Client数据结构和接口](#33-Client数据结构和接口)
-	-[3.4 Module接口](#34-Module接口)
+    -   [3.1 queue的数据结构和接口](#31-queue的数据结构和接口)
+    -   [3.2 chanSub订阅通道和Message](#32-chanSub订阅通道和Message)
+    -   [3.3 Client数据结构和接口](#33-Client数据结构和接口)
+    - 	[3.4 Module接口](#34-Module接口)
 	
     - [4. chain33中queue的使用](#4-chain33中queue的使用)
 
