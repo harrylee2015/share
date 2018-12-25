@@ -160,10 +160,9 @@ zkSNARKs在Zerocoin中的应用是一个很复杂的过程，包括零知识需�
 
 除此之外，Zerocoin和Zcash都需要内置一些参数，这个参数的不泄露保证了网络的安全。
 
-### 1.4 区块链中零知识证明的实现原理
-由上面讲述我们不难看出，零知识证明目的在于隐匿交易者的信息
+### 1.6 零知识证明在chain33中应用的展望
 
-|ZeroCoin|作废的零币||
+
 
 
 [参考链接1](https://studygolang.com/topics/7582?fr=sidebar)
