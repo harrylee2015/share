@@ -169,3 +169,7 @@ zkSNARKs在Zerocoin中的应用是一个很复杂的过程，包括零知识需�
 
 [参考链接2](https://mp.weixin.qq.com/s?__biz=MzU2MjcxNTEwOQ==&mid=2247483893&idx=1&sn=bf7b54f22a172eb89e5ee806e95249e2&chksm=fc64017fcb138869bda2877cd61a57e56cd485ece08aeb8998da5144ae477d18d55378dfdd36&mpshare=1&scene=1&srcid=1222osWJoSEduFRn0dtRjOIx#rd
 )
+
+[参考链接3](https://z.cash/blog/snark-explain)
+
+[参考链接4](https://z.cash/blog/snark-explain)
