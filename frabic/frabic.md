@@ -1,6 +1,7 @@
 # 初始frabic
 看了frabic官方使用文档，这里做个大概的总结
 
+[初识frabic](https://github.com/harrylee2015/share/blob/master/frabic/%E5%88%9D%E5%A7%8Bfrabic.md)
 
 
 
