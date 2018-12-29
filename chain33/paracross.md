@@ -33,6 +33,117 @@ harry@harry-VirtualBox:~/parachain$ ./chain33-cli --rpc_laddr http://localhost:8
     "addr": "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh"
 }
 ```
+* 交易是执行成功的
+```bash
+harry@harry-VirtualBox:~/chain33Test$ ./chain33-cli tx query_hash -s 0x55b4aa75a7121d2a3da0ba66f229d364ac95c45251e7218b58317d061542ecd5
+{
+    "txs": [
+        {
+            "tx": {
+                "execer": "user.p.evmtest.paracross",
+                "payload": {
+                    "assetTransfer": {
+                        "cointoken": "",
+                        "amount": "200000000",
+                        "note": "0x74657374",
+                        "to": "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh"
+                    },
+                    "ty": 10000
+                },
+                "rawpayload": "0x10904e222f108084af5f1a04746573742222313652655a487a4d434774507438423758626e5a51326a6558735047397745756668",
+                "signature": {
+                    "ty": 1,
+                    "pubkey": "0x021832ee50ab60016d6f6bf03315b9354434ba487929c57c79d67de2309aba3bfe",
+                    "signature": "0x3045022100890943dff8b1cb2dcc7c61fb922af092b136afb5c23ce912aed7865e31fe8d1a02202a2dccf8c28a40649235211f5edfec7c83790432c15d748422fa48492fb28285"
+                },
+                "fee": "0.0010",
+                "expire": 1546066374,
+                "nonce": 5242188417535495664,
+                "to": "17CDrYsxSa5nd4nfx2XZaszxqyRYwpmvt7",
+                "from": "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh",
+                "hash": "0x55b4aa75a7121d2a3da0ba66f229d364ac95c45251e7218b58317d061542ecd5"
+            },
+            "receipt": {
+                "ty": 2,
+                "tyName": "ExecOk",
+                "logs": [
+                    {
+                        "ty": 2,
+                        "tyName": "LogFee",
+                        "log": {
+                            "prev": {
+                                "currency": 0,
+                                "balance": "39999300000",
+                                "frozen": "0",
+                                "addr": "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh"
+                            },
+                            "current": {
+                                "currency": 0,
+                                "balance": "39999200000",
+                                "frozen": "0",
+                                "addr": "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh"
+                            }
+                        },
+                        "rawLog": "0x0a2b10a0c3938195012222313652655a487a4d434774507438423758626e5a51326a6558735047397745756668122b1080b68d8195012222313652655a487a4d434774507438423758626e5a51326a6558735047397745756668"
+                    },
+                    {
+                        "ty": 6,
+                        "tyName": "LogExecTransfer",
+                        "log": {
+                            "execAddr": "1HPkPopVe3ERfvaAgedDtJQ792taZFEHCe",
+                            "prev": {
+                                "currency": 0,
+                                "balance": "10000000000",
+                                "frozen": "0",
+                                "addr": "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh"
+                            },
+                            "current": {
+                                "currency": 0,
+                                "balance": "9800000000",
+                                "frozen": "0",
+                                "addr": "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh"
+                            }
+                        },
+                        "rawLog": "0x0a223148506b506f7056653345526676614167656444744a5137393274615a4645484365122a1080c8afa0252222313652655a487a4d434774507438423758626e5a51326a65587350473977457566681a2a1080c480c1242222313652655a487a4d434774507438423758626e5a51326a6558735047397745756668"
+                    },
+                    {
+                        "ty": 6,
+                        "tyName": "LogExecTransfer",
+                        "log": {
+                            "execAddr": "1HPkPopVe3ERfvaAgedDtJQ792taZFEHCe",
+                            "prev": {
+                                "currency": 0,
+                                "balance": "0",
+                                "frozen": "0",
+                                "addr": "17CDrYsxSa5nd4nfx2XZaszxqyRYwpmvt7"
+                            },
+                            "current": {
+                                "currency": 0,
+                                "balance": "200000000",
+                                "frozen": "0",
+                                "addr": "17CDrYsxSa5nd4nfx2XZaszxqyRYwpmvt7"
+                            }
+                        },
+                        "rawLog": "0x0a223148506b506f7056653345526676614167656444744a5137393274615a46454843651224222231374344725973785361356e64346e667832585a61737a787179525977706d7674371a29108084af5f222231374344725973785361356e64346e667832585a61737a787179525977706d767437"
+                    }
+                ]
+            },
+            "height": 3512,
+            "index": 1,
+            "blocktime": 1546066270,
+            "amount": "2.0000",
+            "fromaddr": "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh",
+            "actionname": "assetTransfer",
+            "assets": [
+                {
+                    "exec": "user.p.evmtest.paracross",
+                    "amount": 200000000
+                }
+            ]
+        }
+    ]
+}
+```
 
  3. 调用平行链的 paracross 合约的 send_exec 将 币 转移到 trade 合约
  * 查询合约地址
