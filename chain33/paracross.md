@@ -41,9 +41,11 @@ harry@harry-VirtualBox:~/parachain$ ./chain33-cli asset balance --addr "16ReZHzM
  
 ```bash
 harry@harry-VirtualBox:~/parachain$ ./chain33-cli para transfer_exec -a 5 -e user.p.guodun.trade  -s coins.bty  --rpc_laddr http://localhost:8901
-  ·····
+```
+```bash
 harry@harry-VirtualBox:~/parachain$ ./chain33-cli wallet sign -d xxxx  -a 16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh  -e 300s -f 0.001 -k 16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh  --paraName user.p.guodun. --rpc_laddr http://localhost:8901
-
+```
+```bash
 harry@harry-VirtualBox:~/parachain$ ./chain33-cli wallet send -d xxxxx --paraName user.p.guodun. --rpc_laddr http://localhost:8901
 ```
 
@@ -69,11 +71,12 @@ harry@harry-VirtualBox:~/parachain$ ./chain33-cli asset balance -a 16ReZHzMCGtPt
 harry@harry-VirtualBox:~/parachain$ ./chain33-cli wallet sign -d xxxx   -a 16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh  -e 300s -f 0.001 -k 16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh  --paraName user.p.guodun. --rpc_laddr http://localhost:8901
   ```
     
-    * 查看卖单
+  查看卖单
     
-    ```bash
-     harry@harry-VirtualBox:~/parachain$ curl  -X POST  http://localhost:8901 -H "Content-Type:application/json" -d '{"jsonrpc":"2.0", "id": 1, "method":"Chain33.Query","params":[{"execer":"trade", "funcName":"GetTokenSellOrderByStatus", "payload" : {"tokenSymbol": "coins.bty", "status": 1, "count":10, "direction": 0,"fromKey":""}}]}' 
+  ```bash
+ harry@harry-VirtualBox:~/parachain$ curl  -X POST  http://localhost:8901 -H "Content-Type:application/json" -d '{"jsonrpc":"2.0", "id": 1, "method":"Chain33.Query","params":[{"execer":"trade", "funcName":"GetTokenSellOrderByStatus", "payload" : {"tokenSymbol": "coins.bty", "status": 1, "count":10, "direction": 0,"fromKey":""}}]}' 
    ```
+   
    ```json
 {"id":1,"result":{"orders":[{"tokenSymbol":"coins.bty","owner":"16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh","amountPerBoardlot":"1","minBoardlot":"1","pricePerBoardlot":"1","totalBoardlot":"15000000","tradedBoardlot":"0","buyID":"","status":1,"sellID":"mavl-trade-sell-48ca0988435ae210e35e9a9f33b40a0a07968bd87af5170c2352790563670bed","txHash":"0x48ca0988435ae210e35e9a9f33b40a0a07968bd87af5170c2352790563670bed","height":"50","key":"mavl-trade-sell-48ca0988435ae210e35e9a9f33b40a0a07968bd87af5170c2352790563670bed","blockTime":"1547516548","isSellOrder":true,"assetExec":"paracross"}]} ,"error":null}
     ```
