@@ -76,12 +76,13 @@ harry@harry-VirtualBox:~/parachain$ ./chain33-cli asset balance -a 16ReZHzMCGtPt
    ```
    
    ```json
+   
 {"id":1,"result":{"orders":[{"tokenSymbol":"coins.bty","owner":"16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh","amountPerBoardlot":"1","minBoardlot":"1","pricePerBoardlot":"1","totalBoardlot":"15000000","tradedBoardlot":"0","buyID":"","status":1,"sellID":"mavl-trade-sell-48ca0988435ae210e35e9a9f33b40a0a07968bd87af5170c2352790563670bed","txHash":"0x48ca0988435ae210e35e9a9f33b40a0a07968bd87af5170c2352790563670bed","height":"50","key":"mavl-trade-sell-48ca0988435ae210e35e9a9f33b40a0a07968bd87af5170c2352790563670bed","blockTime":"1547516548","isSellOrder":true,"assetExec":"paracross"}]} ,"error":null}
+
     ```
-    1. 在将平行链的主币 和需要的币交易
     
-    ```bash
-    ```
+    1. 在将平行链的主币 和需要的币交易
+
  2. 将交易所得的币从trade 合约 提到对应的使用的合约， 进行使用
  3. 剩下的币，或和别人交易得到的币从平行链移回主链
 ```bash
