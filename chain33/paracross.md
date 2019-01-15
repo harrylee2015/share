@@ -67,10 +67,8 @@ harry@harry-VirtualBox:~/parachain$ ./chain33-cli asset balance -a 16ReZHzMCGtPt
     ```bash
     harry@harry-VirtualBox:~/parachain$ curl -d '{"jsonrpc":"2.0", "id": 1, "method":"trade.CreateRawTradeSellTx","params":[{"tokenSymbol":"coins.bty", "amountPerBoardlot":1, "minBoardlot":1,"pricePerBoardlot":1,"totalBoardlot":15000000,"fee":100000,"assetExec":"paracross"}]}'         -H 'content-type:text/plain;'         http://localhost:8901
     ```
-    ```bash
-harry@harry-VirtualBox:~/parachain$ ./chain33-cli wallet sign -d xxxx   -a 16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh  -e 300s -f 0.001 -k 16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh  --paraName user.p.guodun. --rpc_laddr http://localhost:8901
-  ```
-    
+   签名，发送
+   
   查看卖单
     
   ```bash
