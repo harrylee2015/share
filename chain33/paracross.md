@@ -170,3 +170,20 @@ harry@harry-VirtualBox:~/parachain$ ./chain33-cli asset balance -a 16ReZHzMCGtPt
         "addr": "1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S"
      }
    ```
+   
+   * 查询主链paracross合约下面的bty余额
+   
+   ```bash
+   harry@harry-VirtualBox:~/chain33Test$ ./chain33-cli asset balance  --addr 1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S --asset_exec  coins 
+   --asset_symbol bty  -e paracross --rpc_laddr http://localhost:8801
+   {
+      "balance": "0.0000",
+      "frozen": "0.0000",
+      "addr": "1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S"
+   }
+   ```
+   * 将跨链币，提到主链的paracross合约下，变成bty
+   
+   ```bash
+   ```
+   
