@@ -140,6 +140,33 @@ harry@harry-VirtualBox:~/parachain$ ./chain33-cli asset balance -a 16ReZHzMCGtPt
     
  3. 剩下的币，或和别人交易得到的币从平行链移回主链
  
-```bash
-./chain33-cli para asset_withdraw --title user.p.evmtest. -a 0.7 -n test -t 12qyocayNF7Lv6C9qW4avxs2E7U41fKSfv
-```
+
+   * 查询trade 合约下面的跨链币数量
+ 
+   ```bash
+    harry@harry-VirtualBox:~/parachain$ ./chain33-cli asset balance  --addr 1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S --asset_exec  paracross 
+    --asset_symbol coins.bty  -e user.p.guodun.trade --rpc_laddr http://localhost:8901
+    {
+       "balance": "0.0100",
+       "frozen": "0.0000",
+       "addr": "1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S"
+    }
+   ```
+   * 将跨连币转移到 paracross 合约下
+   
+   ```bash
+   harry@harry-VirtualBox:~/parachain$ ./chain33-cli para  withdraw  -a 0.01 -e user.p.guodun.trade -s coins.bty --rpc_laddr        http://localhost:8901
+   
+   ```
+   签名，发送
+   
+   * 查询paracross合约下的跨连币余额
+   
+   ```bash
+    harry@harry-VirtualBox:~/chain33Test$ ./chain33-cli asset balance  --addr 1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S --asset_exec  paracross     --asset_symbol coins.bty  -e paracross --rpc_laddr http://localhost:8901
+     {
+        "balance": "0.0100",
+        "frozen": "0.0000",
+        "addr": "1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S"
+     }
+   ```
