@@ -1,5 +1,15 @@
 # 跨链币使用
 
+## 前提
+ 需要在平行链节点配置共识节点，具体参照
+ [平行链共识节点配置](https://github.com/33cn/plugin/blob/master/plugin/dapp/paracross/cmd/build/chain33.para.test.toml)
+ 
+ 对应主链节点执行命令
+ ```bash
+ ./chain33-cli config_tx -o add -k paracross-nodes-user.p.guodun. -v  14KEKbYtKKQm4wMthSK9J4La4nAiidGozt
+ ```
+ 签名，发送  前提是需要在钱包中导入authAccount 地址
+
 目前chain33 支持把资产 从主链跨链到平行链使用。 具体步骤如下
 
  1. 在主链上先把资产转移到paracross 合约。 目前资产有 coins 和 token 的币
@@ -185,5 +195,12 @@ harry@harry-VirtualBox:~/parachain$ ./chain33-cli asset balance -a 16ReZHzMCGtPt
    * 将跨链币，提到主链的paracross合约下，变成bty
    
    ```bash
+   harry@harry-VirtualBox:~/parachain$ ./chain33-cli send  para  asset_withdraw -a 0.01  --title user.p.guodun. -t  1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S -k 1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S  --paraName user.p.guodun. --rpc_laddr http://localhost:8901
+
    ```
    
+   * 查询主链paracross 合约下的余额
+    
+    ```bash
+    
+    ```
