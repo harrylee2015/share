@@ -192,7 +192,7 @@ harry@harry-VirtualBox:~/parachain$ ./chain33-cli asset balance -a 16ReZHzMCGtPt
       "addr": "1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S"
    }
    ```
-   * 将跨链币，提到主链的paracross合约下，变成bty
+   * 将跨链币，提到主链的paracross合约下，变成bty (这里需要注意，平行链节点必须要配置共识节点,才会提币成功)
    
    ```bash
    harry@harry-VirtualBox:~/parachain$ ./chain33-cli send  para  asset_withdraw -a 0.01  --title user.p.guodun. -t  1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S -k 1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S  --paraName user.p.guodun. --rpc_laddr http://localhost:8901
@@ -202,5 +202,11 @@ harry@harry-VirtualBox:~/parachain$ ./chain33-cli asset balance -a 16ReZHzMCGtPt
    * 查询主链paracross 合约下的余额
     
     ```bash
-    
+       harry@harry-VirtualBox:~/chain33Test$ ./chain33-cli asset balance  --addr 1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S --asset_exec  coins 
+   --asset_symbol bty  -e paracross --rpc_laddr http://localhost:8801
+   {
+      "balance": "0.0100",
+      "frozen": "0.0000",
+      "addr": "1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S"
+   }
     ```
