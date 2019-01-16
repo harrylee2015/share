@@ -99,15 +99,16 @@ harry@harry-VirtualBox:~/parachain$ curl -d '{"jsonrpc":"2.0", "id": 1, "method"
     
    * 查看卖家trade合约平行链主币余额余额
    
-    余额增加了0.01 个coins
-    ```bash
-    harry@harry-VirtualBox:~/chain33Test$ ./chain33-cli asset balance  --addr 16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh --asset_exec coins --    asset_symbol bty  -e user.p.guodun.trade --rpc_laddr http://localhost:8901
-{
-    "balance": "1000.0100",
-    "frozen": "0.0000",
-    "addr": "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh"
-}
-    ```
+   余额增加了0.01 个coins
+    
+   ```bash
+      harry@harry-VirtualBox:~/chain33Test$ ./chain33-cli asset balance  --addr 16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh --asset_exec coins --       asset_symbol bty  -e user.p.guodun.trade --rpc_laddr http://localhost:8901
+      {
+      "balance": "1000.0100",
+      "frozen": "0.0000",
+      "addr": "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh"
+      }
+   ```
     
    
    2. 在将平行链的主币 和需要的币交易
@@ -117,10 +118,11 @@ harry@harry-VirtualBox:~/parachain$ curl -d '{"jsonrpc":"2.0", "id": 1, "method"
     
     ```bash
     harry@harry-VirtualBox:~/parachain$ curl  -X POST  http://localhost:8901 -H "Content-Type:application/json" -d '{"jsonrpc":"2.0", "id": 1, "method":"Chain33.Query","params":[{"execer":"trade", "funcName":"GetTokenSellOrderByStatus", "payload" : {"tokenSymbol": "GUODUN", "status": 1, "count":10, "direction": 0,"fromKey":""}}]}' 
-    ```    
-   
     {"id":1,"result":{"orders":           [{"tokenSymbol":"GUODUN","owner":"1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S","amountPerBoardlot":"1","minBoardlot":"1","pricePerBoardlot":"1","totalBoardlot":"100000000","tradedBoardlot":"0","buyID":"","status":1,"sellID":"mavl-trade-sell-1c45076cd3c0f18f1fa5b3c4e5ad50645765d5b4e9faeb8f24ff0c12e2b558ad","txHash":"0x1c45076cd3c0f18f1fa5b3c4e5ad50645765d5b4e9faeb8f24ff0c12e2b558ad","height":"77","key":"mavl-trade-sell-1c45076cd3c0f18f1fa5b3c4e5ad50645765d5b4e9faeb8f24ff0c12e2b558ad","blockTime":"1547534068","isSellOrder":true,"assetExec":"token"}]},
     "error":null} 
+    ```    
+   
+    
     
     
    
@@ -168,8 +170,8 @@ harry@harry-VirtualBox:~/parachain$ curl -d '{"jsonrpc":"2.0", "id": 1, "method"
      ```bash
      harry@harry-VirtualBox:~/parachain$ ./chain33-cli para  withdraw  -a 0.01 -e user.p.guodun.trade -s coins.bty
      --rpc_laddr          http://localhost:8901
-  
      ```
+     
    签名，发送
    
    * 查询paracross合约下的跨连币余额
@@ -201,13 +203,11 @@ harry@harry-VirtualBox:~/parachain$ curl -d '{"jsonrpc":"2.0", "id": 1, "method"
    
      ```bash
       harry@harry-VirtualBox:~/parachain$ ./chain33-cli send  para  asset_withdraw -a 0.01  --title user.p.guodun. -t     1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S -k 1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S  --paraName user.p.guodun. --rpc_laddr http://localhost:8901
-
      ```
    
    * 查询主链paracross 合约下的余额
     
       ```bash
-      
        harry@harry-VirtualBox:~/chain33Test$ ./chain33-cli asset balance  --addr 1Bsg9j6gW83sShoee1fZAt9TkUjcrCgA9S --asset_exec  coins 
        --asset_symbol bty  -e paracross --rpc_laddr http://localhost:8801
        {
