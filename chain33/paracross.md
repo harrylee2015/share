@@ -36,7 +36,7 @@ harry@harry-VirtualBox:~/parachain$ ./chain33-cli send  para asset_transfer --ti
 ```
 * 结果
 ```bash
-harry@harry-VirtualBox:~/parachain$ ./chain33-cli asset balance --addr "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh" --asset_exec paracross coins  --asset_symbol coins.bty  -e  "paracross"   --rpc_laddr http://localhost:8901
+harry@harry-VirtualBox:~/parachain$ ./chain33-cli asset balance --addr "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh" --asset_exec paracross   --asset_symbol coins.bty  -e  "paracross"   --rpc_laddr http://localhost:8901
 {
     "balance": "10.0000",
     "frozen": "0.0000",
@@ -63,7 +63,7 @@ harry@harry-VirtualBox:~/parachain$ ./chain33-cli wallet send -d xxxxx --paraNam
 * 结果查询
 
 ```bash
-harry@harry-VirtualBox:~/parachain$ ./chain33-cli asset balance -a 16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh --asset_exec paracross coins  --asset_symbol coins.bty -e user.p.guodun.trade   --rpc_laddr http://localhost:8901
+harry@harry-VirtualBox:~/parachain$ ./chain33-cli asset balance -a 16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh --asset_exec paracross  --asset_symbol coins.bty -e user.p.guodun.trade   --rpc_laddr http://localhost:8901
 {
     "balance": "5.0000",
     "frozen": "0.0000",
