@@ -249,3 +249,17 @@ harry@harry-VirtualBox:~/parachain$ curl -d '{"jsonrpc":"2.0", "id": 1, "method"
         }
          
      ```
+
+**卖家先挂卖单，买家然后买入**
+
+|操作名称|说明|
+|-|-|
+|trade.CreateRawTradeSellTx|创建限价卖出token的交易|
+|trade.CreateRawTradeBuyTx|买入指定卖单token的交易|
+
+**买家先挂买单，卖家然后卖出**
+
+|操作名称|说明|
+|-|-|
+|trade.CreateRawTradeBuyLimitTx|创建挂单限价买入token的交易|
+|trade.CreateRawTradeSellMarketTx|创建根据买单，卖出token的交易|
