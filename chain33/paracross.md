@@ -36,7 +36,7 @@
     对应的币就会出现在 对应的平行链的 paracross 合约
 ```bash
 
-harry@harry-VirtualBox:~/parachain$ ./chain33-cli send  para asset_transfer --title user.p.guodun. -a 10  -n test -t "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh" -k "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh"
+harry@harry-VirtualBox:~/parachain$ ./chain33-cli send  para asset_transfer --title user.p.guodun. -a 10  -s bty  -n test -t "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh" -k "16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh"
 0x1d9d893914b3f6e631abaa33b7d57cc72ff05457d3b482ec2d1ae0907955b4af
 
 ```
