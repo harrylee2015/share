@@ -111,5 +111,7 @@ Summary:
 harry@harry-VirtualBox:~/gopath/src/github.com/33cn/chain33$ go list ./... |grep -v "vendor" |grep -v "mocks" |xargs go test
 ```
 * 检查结果
+
   略
+  
   存在的主要问题是代码覆盖率不足，有的包还没有单元测试
