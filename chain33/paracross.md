@@ -2,7 +2,7 @@
 
 ## 前提
  需要在平行链节点配置共识节点，具体参照
- [平行链共识节点配置](https://github.com/33cn/plugin/blob/master/plugin/dapp/paracross/cmd/build/chain33.para.test.toml)
+ [平行链共识节点配置](https://github.com/33cn/plugin/blame/f6103da008c71c48dd05a630a9bec281aeb7aa2c/plugin/dapp/paracross/cmd/build/chain33.para.test.toml#L70-L84)
  
  对应主链节点执行命令
  ```bash
