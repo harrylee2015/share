@@ -31,7 +31,7 @@ integration|integration模块，集成测试
 msp|msp模块，membership service provider,会员服务提供者
 orderer|orderer模块，选择何种共识目前有solo,etcdraft,kafka等，开发者在这里可以实现自己的共识算法
 peer|peer模块,节点
-identity|identity模块，一致性，相当于其他系统的consensus,共识
+identity|identity模块，身份鉴权
 
 ***
 
