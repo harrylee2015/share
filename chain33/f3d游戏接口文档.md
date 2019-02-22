@@ -283,14 +283,14 @@ request: http.post
   "params": [
     {
       "execer": "f3d",
-      "funcName": "QueryLastRoundInfo",
+      "funcName": "QueryRoundInfoByRound",
       "payload": {
+          "round":3
       }
     }
   ]
 }
 ```
-
 **参数说明：**
 
 |参数|类型|说明|
@@ -298,7 +298,7 @@ request: http.post
 |method|string|Chain33.Query|
 |execer|string|执行器名，主链上:f3d, 平行链上:user.p.xxx.f3d|
 |funcName|string|QueryLastRoundInfo|
-
+|round|int64|哪一轮|
 
 **响应报文：**
 
@@ -407,3 +407,56 @@ response:
 
 
 ### 3.3 查询用户具体的买票信息
+**请求报文：**
+
+```json
+request: http.post
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "Chain33.Query",
+  "params": [
+    {
+      "execer": "f3d",
+      "funcName": "QueryBuyRecordByRoundAndAddr",
+      "payload": {
+          "round":3,
+          "addr":"16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh"
+      }
+    }
+  ]
+}
+```
+**参数说明：**
+
+|参数|类型|说明|
+|----|----|----|
+|method|string|Chain33.Query|
+|execer|string|执行器名，主链上:f3d, 平行链上:user.p.xxx.f3d|
+|funcName|string|QueryLastRoundInfo|
+|round|int64|哪一轮|
+|addr|int64|用户地址|
+
+**响应报文：**
+
+```json
+response:
+{
+   "id":1,
+   "result":
+       {
+         "recordList": [{"round":"3","keyPrice":0.11,"keyNum":"100","addr":"16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh","buyKeyTime":"1544597710","buyKeyTxHash":"0x5dabfce7808cade711b463c77333c24237546525cf460eb66d9036dfd7d15739","index":"86800001"},{"round":"3","keyPrice":0.1,"keyNum":"100","addr":"16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh","buyKeyTime":"1544597393","buyKeyTxHash":"0xb23d5e37ae54fd2ca9fc981ba2737c430dc9c5b06eaa5be68dd7eeae0751c6aa","index":"84700001"}]},
+  "error":null
+  }
+```
+
+**参数说明：**
+
+|参数|类型|说明|
+|----|----|----|
+|round|int64|第几轮|
+|keyPrice|float|本次购买钥匙价格|
+|addr|string|地址|
+|buyKeyTime|string|购买时间|
+|keyNum|int64|购买key数量|
+|buyKeyTxHash|string|购买的交易hash|
