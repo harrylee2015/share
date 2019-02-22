@@ -272,6 +272,138 @@ response:
 
 ### 3.2 查询指定轮次的f3d游戏信息
 
+**请求报文：**
+
+```json
+request: http.post
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "Chain33.Query",
+  "params": [
+    {
+      "execer": "f3d",
+      "funcName": "QueryLastRoundInfo",
+      "payload": {
+      }
+    }
+  ]
+}
+```
+
+**参数说明：**
+
+|参数|类型|说明|
+|----|----|----|
+|method|string|Chain33.Query|
+|execer|string|执行器名，主链上:f3d, 平行链上:user.p.xxx.f3d|
+|funcName|string|QueryLastRoundInfo|
+
+
+**响应报文：**
+
+```json
+response:
+{
+    "id":1,
+    "result":   {
+             "round":"3",
+             "beginTime":"1544597303",
+             "endTime":"0",
+             "lastOwner":"16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh",
+             "lastKeyTime":"1544597710",
+             "lastKeyPrice":0.121,
+             "bonusPool":21,
+             "userCount":"1",
+             "keyCount":"200",
+             "remainTime":"3600",
+             "updateTime":"1544597710"
+              },
+     "error":null
+ }
+```
+
+**参数说明：**
+
+|参数|类型|说明|
+|----|----|----|
+|round|int64|第几轮|
+|beginTime|int64|开始时间|
+|endTime|int64|结束时间|
+|lastOwner|string|最后一把钥匙持有人地址|
+|lastKeyTime|int64|最后一把钥匙买入时间|
+|lastKeyPrice|int64|最后一把钥匙的价格|
+|bonusPool|float|奖池累计金额|
+|userCount|int64|累计有多少用户参与这一轮游戏|
+|keyCount|int64|已售出key的总数|
+|remainTime|int64|游戏剩余时间/s|
+|updateTime|int64|上一次更新时间|
+
 ### 3.3 根据地址和轮次查询用户收益情况
+
+**请求报文：**
+
+```json
+request: http.post
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "Chain33.Query",
+  "params": [
+    {
+      "execer": "f3d",
+      "funcName": "QueryLastRoundInfo",
+      "payload": {
+          "round":3,
+          "addr":"16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh"
+      }
+    }
+  ]
+}
+```
+
+**参数说明：**
+
+|参数|类型|说明|
+|----|----|----|
+|method|string|Chain33.Query|
+|execer|string|执行器名，主链上:f3d, 平行链上:user.p.xxx.f3d|
+|funcName|string|QueryKeyCountByRoundAndAddr|
+|round|int64|第几轮|
+|addr|string|用户地址|
+
+
+**响应报文：**
+
+```json
+
+response:
+
+{ 
+   "id":1,
+   "result":
+        {
+        "addr":"16ReZHzMCGtPt8B7XbnZQ2jeXsPG9wEufh",
+        "keyNum":"200",
+        "buyCount":"2",
+        "round":"3"，
+        "bonus":0,
+        "totalCost":21
+        },
+    "error":null
+ }
+```
+
+**参数说明：**
+
+|参数|类型|说明|
+|----|----|----|
+|round|int64|第几轮|
+|keyNum|int64|本轮游戏key买的总数|
+|buyCount|int64|本轮游戏买了几次|
+|addr|string|用户地址|
+|bonus|int64|奖金，没开奖时，默认是0|
+|totalCost|int64|买钥匙总成本|
+
 
 ### 3.3 查询用户具体的买票信息
