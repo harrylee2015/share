@@ -433,7 +433,7 @@ request: http.post
 |----|----|----|
 |method|string|Chain33.Query|
 |execer|string|执行器名，主链上:f3d, 平行链上:user.p.xxx.f3d|
-|funcName|string|QueryLastRoundInfo|
+|funcName|string|QueryBuyRecordByRoundAndAddr|
 |round|int64|哪一轮|
 |addr|int64|用户地址|
 
