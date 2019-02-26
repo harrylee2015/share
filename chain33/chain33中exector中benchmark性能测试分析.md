@@ -64,5 +64,8 @@ ok  	github.com/33cn/chain33/executor	3.825s
 函数名称|耗时
 -------|------
 BenchmarkExecBlock|3.00784231s
+BenchmarkGenRandBlock|2.121537785s
+BenchmarkLocalDBGet|1.133654843s
 CreateCoinsBlock|2.169689496s
 ExecBlock|765.3078ms
+
