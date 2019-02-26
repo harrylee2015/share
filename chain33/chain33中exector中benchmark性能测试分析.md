@@ -57,3 +57,11 @@ go test -run=localdb_test.go  -bench=BenchmarkLocalDBGet
 PASS
 ok  	github.com/33cn/chain33/executor	3.825s
 ```
+
+
+加了打印日志分析各个函数耗时
+
+函数名称|耗时
+-------|------
+CreateCoinsBlock|2.169689496s
+ExecBlock|765.3078ms
