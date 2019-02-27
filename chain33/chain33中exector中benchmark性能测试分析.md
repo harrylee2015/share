@@ -67,7 +67,13 @@ BenchmarkExecBlock|3.00784231s
 BenchmarkGenRandBlock|2.121537785s
 BenchmarkLocalDBGet|217.909883ms
 CreateCoinsBlock|2.169689496s
-ExecBlock|765.3078ms
+ExecBlock|618.394741ms
+CheckTxDup|22.92537ms
+ExecTx|87.043018ms
+ExecKVMemSet|320.684168ms
+ExecKVSetCommit|548.048394ms
 
+ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
 
-## 对ExecBlock函数单独进行压力测试，分析内部相关模块执行耗时
+## 对ExecBlock函数，模拟在生产情况下单独进行压力测试，分析内部相关模块执行耗时
+  
