@@ -77,5 +77,5 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
 
 ## 对ExecBlock函数，模拟在生产情况下单独进行压力测试，分析内部相关模块执行耗时
   
-  当数据库是mavl方式时,随着区块的增行，执行时间cost 也会增长
+  当数据库是mavl方式时,随着区块的增长，执行时间cost 也会增长
   
