@@ -75,7 +75,7 @@ ExecKVSetCommit|548.048394ms
 
 ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
 
-## 对ExecBlock函数，模拟在生产情况下单独进行压力测试，分析内部相关模块执行耗时
+## 对ExecBlock函数，进行单独测试，分析内部相关模块执行耗时
  
  经统计分析耗时函数
   
