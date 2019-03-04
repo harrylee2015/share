@@ -77,6 +77,8 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
 
 ## 对ExecBlock函数，进行单独测试，分析内部相关模块执行耗时
 
+ ### store配置为 mavl 模式
+
  虚拟机，2核5G的配置，单节点，每秒出一个块，加压后，tps在450左右，趋于稳定后
  统计分析耗时函数
   
@@ -88,7 +90,7 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    4|store|ExecKVSetCommit|134.800212ms
    5|blockchain|ExecBlock|490.091795ms
    
-  当数据库是mavl方式时,随着区块的增长，执行时间cost 也会缓慢增长
+   随着区块的增长，执行时间cost 也会缓慢增长
   
   
   
