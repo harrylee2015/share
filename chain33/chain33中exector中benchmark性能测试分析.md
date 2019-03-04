@@ -85,6 +85,7 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    2| blockchain|ExecTx|46.648793ms
    3|blockchain|ExecKVMemSet|241.862356ms
    4|blockchain|ExecKVSetCommit|134.800212ms
-  
-  当数据库是mavl方式时,随着区块的增长，执行时间cost 也会增长
+   5|blockchain|ExecBlock|490.091795ms
+   
+  当数据库是mavl方式时,随着区块的增长，执行时间cost 也会缓慢增长
   
