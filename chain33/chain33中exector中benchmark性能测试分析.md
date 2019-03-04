@@ -108,4 +108,4 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    * 通过过对比我们可以发现采用 kvmvcc存储后，ExecKVMemSet和ExecKVSetCommit 两个函数的执行耗时显著下降，同样的配置，系统的吞吐量
    也有所提升
 
-   * 后期优化的重点可以重点围绕CheckTxDup，ExecTx，CheckTxDup 这三个函数进行优化 
+   * 后期优化的重点可以重点围绕CheckTxDup，ExecTx，ExecKVSetCommit 这三个函数进行优化 
