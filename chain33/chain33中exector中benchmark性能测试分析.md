@@ -77,7 +77,7 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
 
 ## 对ExecBlock函数，进行单独测试，分析内部相关模块执行耗时
 
- 虚拟机，2核5G的配置，单节点，每秒出一个块，加压后，tps在500左右，趋于稳定后
+ 虚拟机，2核5G的配置，单节点，每秒出一个块，加压后，tps在450左右，趋于稳定后
  统计分析耗时函数
   
    序号|模块|函数名|耗时统计
@@ -90,3 +90,22 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    
   当数据库是mavl方式时,随着区块的增长，执行时间cost 也会缓慢增长
   
+  
+  
+  ### store配置为 kvmvcc 模式
+   
+   虚拟机，2核5G的配置，单节点，每秒出一个块，加压后，tps在700左右趋于稳定后，
+   统计分析耗时函数
+   
+   序号|模块|函数名|耗时统计
+   ---|---|---|-----
+   1|blockchain|CheckTxDup|35.366131ms
+   2|exector|ExecTx|56.456606ms
+   3|store|ExecKVMemSet|3.615731ms
+   4|store|ExecKVSetCommit|22.147875ms
+   5|blockchain|ExecBlock|132.450229ms
+   
+   * 通过过对比我们可以发现采用 kvmvcc存储后，ExecKVMemSet和ExecKVSetCommit 两个函数的执行耗时显著下降，同样的配置，系统的吞吐量
+   也有所提升
+
+   * 后期优化的重点可以重点围绕CheckTxDup，ExecTx，CheckTxDup 这三个函数进行优化 
