@@ -111,3 +111,74 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    也有所提升
 
    * 后期优化的重点可以考虑围绕CheckTxDup，ExecTx，ExecKVSetCommit 这三个函数进行优化 
+   
+   
+   
+   
+   ### store配置为 kvmvcc模式，数据统计
+    
+   **以下均是用norm执行器，每笔交易都是随机去写入100字节KV数据
+    
+   
+   
+   * 每个块打包得交易数为 600
+   
+   序号|模块|函数名|耗时统计
+   ---|---|---|-----
+   1|blockchain|CheckTxDup|43.871892ms
+   2|exector|ExecTx|36.973969ms
+   3|merkle|CalcMerkleRoot|2.562651ms
+   4|store|ExecKVMemSet|1.397479ms
+   5|store|ExecKVSetCommit|7.736843ms
+   6|blockchain|ExecBlock|94.214597ms
+     
+    
+   * 每个块打包得交易数为 1500
+   
+   序号|模块|函数名|耗时统计
+   ---|---|---|-----
+   1|blockchain|CheckTxDup|136.536985ms
+   2|exector|ExecTx|107.269925ms
+   3|merkle|CalcMerkleRoot|6.753266ms
+   4|store|ExecKVMemSet|3.525295ms
+   5|store|ExecKVSetCommit|15.964752ms
+   6|blockchain|ExecBlock|274.03935ms
+  
+  
+   * 每个块打包得交易数为 3000 
+   
+   序号|模块|函数名|耗时统计
+   ---|---|---|-----
+   1|blockchain|CheckTxDup|277.589837ms
+   2|exector|ExecTx|271.341151ms
+   3|merkle|CalcMerkleRoot|12.81075ms
+   4|store|ExecKVMemSet|6.222214ms
+   5|store|ExecKVSetCommit|83.285137ms
+   6|blockchain|ExecBlock|658.070058ms
+   
+   
+   * 每个块打包得交易数为 5000 
+   
+   序号|模块|函数名|耗时统计
+   ---|---|---|-----
+   1|blockchain|CheckTxDup|611.882472ms
+   2|exector|ExecTx|518.891374ms
+   3|merkle|CalcMerkleRoot|38.277755ms
+   4|store|ExecKVMemSet|11.412032ms
+   5|store|ExecKVSetCommit|38.494543ms
+   6|blockchain|ExecBlock|1.232125534s
+
+   
+   * 每个块打包得交易数为 10000
+   
+   序号|模块|函数名|耗时统计
+   ---|---|---|-----
+   1|blockchain|CheckTxDup|1.28111507s
+   2|exector|ExecTx|1.193757552s
+   3|merkle|CalcMerkleRoot|50.94395ms
+   4|store|ExecKVMemSet|26.701296ms
+   5|store|ExecKVSetCommit|110.768568ms
+   6|blockchain|ExecBlock|2.688707323s
+   
+   
+   外加一秒等待时间，这样一估算，单节点的情况下，系统的实际tps只有在2000左右
