@@ -181,4 +181,4 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    6|blockchain|ExecBlock|2.688707323s
    
    
-   外加一秒等待时间，这样一估算，单节点的情况下，系统的实际tps只有在2000左右
+   外加一秒等待时间，这样一估算，单节点的情况下，系统的实际tps只有2000左右
