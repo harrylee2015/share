@@ -117,10 +117,10 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    
    ### store配置为 kvmvcc模式，数据统计
     
-    
-   **以下均是用norm执行器，每笔交易都是随机去写入100字节KV数据**
+   **前提：**
    
-   **机器配置为10核，32G内存，磁盘为固态硬盘，操作系统ubuntu** 
+   以下均是用norm执行器，每笔交易都是随机去写入100字节KV数据 
+   机器配置为10核，32G内存，磁盘为固态硬盘，操作系统ubuntu
     
    
    **以下是raft默认一秒打一个块的测试数据，且TxHeight=false**
