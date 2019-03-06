@@ -120,9 +120,10 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
     
    **以下均是用norm执行器，每笔交易都是随机去写入100字节KV数据**
    
-   **机器配置为10核，32G内存，磁盘为固态硬盘** 
+   **机器配置为10核，32G内存，磁盘为固态硬盘，操作系统ubuntu** 
     
    
+   **以下是raft默认一秒打一个块的测试数据，且TxHeight=false**
    
    * 每个块打包得交易数为 600
    
@@ -186,4 +187,63 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    
    外加一秒等待时间，这样一估算，单节点的情况下，系统的实际tps只有2000左右
 
-   **如果把raft打包等待时间去掉，则tps可以提升到4000左右**
+   **以下是把raft默认的打包等待时间去掉的测试数据，且TxHeight=true,开启只在指定高度进行查询交易去重**
+   
+   
+   * 每个块打包得交易数为 10左右时
+   
+   序号|模块|函数名|耗时统计
+   ---|---|---|-----
+   1|blockchain|CheckTxDup|296.059µs
+   2|exector|ExecTx|1.167401ms
+   3|merkle|CalcMerkleRoot|46.655µs
+   4|store|ExecKVMemSet|96.87µs
+   5|store|ExecKVSetCommit|4.434937ms
+   6|blockchain|ExecBlock|6.579841ms
+   
+   * 每个块打包得交易数为 20左右时
+   
+   序号|模块|函数名|耗时统计
+   ---|---|---|-----
+   1|blockchain|CheckTxDup|849.328µs
+   2|exector|ExecTx|1.546055ms
+   3|merkle|CalcMerkleRoot|89.815µs
+   4|store|ExecKVMemSet|202.607µs
+   5|store|ExecKVSetCommit|1.219551ms
+   6|blockchain|ExecBlock|4.445475ms
+   
+   
+   * 每个块打包得交易数为 100左右时
+   
+   序号|模块|函数名|耗时统计
+   ---|---|---|-----
+   1|blockchain|CheckTxDup|8.210192ms
+   2|exector|ExecTx|10.282714ms
+   3|merkle|CalcMerkleRoot|538.193µs
+   4|store|ExecKVMemSet|385.73µs
+   5|store|ExecKVSetCommit|15.319905ms
+   6|blockchain|ExecBlock|36.329451ms
+   
+   
+   * 每个块打包得交易数为2000左右时
+   
+   序号|模块|函数名|耗时统计
+   ---|---|---|-----
+   1|blockchain|CheckTxDup|186.300685ms
+   2|exector|ExecTx|252.756901ms
+   3|merkle|CalcMerkleRoot|9.734936ms
+   4|store|ExecKVMemSet|6.118077ms
+   5|store|ExecKVSetCommit|15.228285ms
+   6|blockchain|ExecBlock|478.434048ms
+   
+   
+   * 每个块打包得交易数为5000左右时
+   
+   序号|模块|函数名|耗时统计
+   ---|---|---|-----
+   1|blockchain|CheckTxDup|586.847787ms
+   2|exector|ExecTx|913.344191ms
+   3|merkle|CalcMerkleRoot|27.45629ms
+   4|store|ExecKVMemSet|15.262978ms
+   5|store|ExecKVSetCommit|31.636432ms
+   6|blockchain|ExecBlock|1.589942026s
