@@ -250,4 +250,4 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    5|store|ExecKVSetCommit|31.636432ms
    6|blockchain|ExecBlock|1.589942026s
 
-   此时估算一下系统的实际tps在4000到5000左右
+   这样一估算，单节点的情况下，系统的实际tps在4000到5000左右
