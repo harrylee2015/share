@@ -185,7 +185,9 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    6|blockchain|ExecBlock|2.688707323s
    
    
-   外加一秒等待时间，这样一估算，单节点的情况下，系统的实际tps只有2000左右
+   外加一秒等待时间，这样一估算，单节点的情况下，此时系统的实际tps只有2000左右
+   
+   
 
    **以下是把raft默认的打包等待时间去掉的测试数据，且TxHeight=true,开启只在指定高度进行查询交易去重**
    
@@ -247,3 +249,5 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    4|store|ExecKVMemSet|15.262978ms
    5|store|ExecKVSetCommit|31.636432ms
    6|blockchain|ExecBlock|1.589942026s
+
+   此时估算一下系统的实际tps在4000到5000左右
