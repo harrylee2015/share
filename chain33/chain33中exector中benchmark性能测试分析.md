@@ -122,7 +122,7 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    以下均是用norm执行器，每笔交易都是随机去写入100字节KV数据 
    机器配置为10核，32G内存，磁盘为固态硬盘，操作系统ubuntu
 
-   **以下是把raft默认的打包等待时间去掉的测试数据**
+   **以下是把raft默认的打包等待时间去掉,单节点未开启CheckSign的测试数据**
    
    
    * 每个块打包得交易数为 10左右时
@@ -195,3 +195,39 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    
 
    这样一估算，单节点的情况下，系统的实际tps在4000到5000左右
+   
+   
+   **以下是把raft默认的打包等待时间去掉,3个节点，开启CheckSign验证的测试数据**
+   
+   
+   * 每个块打包得交易数为 10左右时
+   
+   序号|模块|函数名|master打包节点耗时统计|slave节点耗时|
+   ---|---|---|----|----
+   1|blockchain|CheckSign|818.676?s|
+   2|blockchain|CheckTxDup|268.609µs|
+   3|merkle|CalcMerkleRootCache|32.616µs|
+   4|exector|ExecTx|1.373843ms|
+   5|merkle|CalcMerkleRoot|44.349µs|
+   6|store|ExecKVMemSet|112.164µs|
+   7|store|ExecKVSetCommit|103.304206ms|
+   8|blockchain|ExecBlock|106.439299ms|
+   
+   * 每个块打包得交易数为 20左右时
+   
+
+   
+   
+   * 每个块打包得交易数为 100左右时
+   
+
+   
+   
+   * 每个块打包得交易数为2000左右时
+   
+
+   
+   * 每个块打包得交易数为5000左右时
+   
+   
+
