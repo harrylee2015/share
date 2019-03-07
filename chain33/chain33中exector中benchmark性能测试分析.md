@@ -189,65 +189,76 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    
    
 
-   **以下是把raft默认的打包等待时间去掉的测试数据，且TxHeight=true,开启只在指定高度进行查询交易去重**
+   **以下是把raft默认的打包等待时间去掉的测试数据**
    
    
    * 每个块打包得交易数为 10左右时
    
    序号|模块|函数名|耗时统计
    ---|---|---|-----
-   1|blockchain|CheckTxDup|296.059µs
-   2|exector|ExecTx|1.167401ms
-   3|merkle|CalcMerkleRoot|46.655µs
-   4|store|ExecKVMemSet|96.87µs
-   5|store|ExecKVSetCommit|4.434937ms
-   6|blockchain|ExecBlock|6.579841ms
+   1|blockchain|CheckSign|1.956µs
+   2|blockchain|CheckTxDup|632.067µs
+   3|merkle|CalcMerkleRootCache|39.461µs
+   4|exector|ExecTx|973.593µs
+   5|merkle|CalcMerkleRoot|58.108µs
+   6|store|ExecKVMemSet|134.585µs
+   7|store|ExecKVSetCommit|3.499766ms
+   8|blockchain|ExecBlock|5.918733ms
    
    * 每个块打包得交易数为 20左右时
    
    序号|模块|函数名|耗时统计
    ---|---|---|-----
-   1|blockchain|CheckTxDup|849.328µs
-   2|exector|ExecTx|1.546055ms
-   3|merkle|CalcMerkleRoot|89.815µs
-   4|store|ExecKVMemSet|202.607µs
-   5|store|ExecKVSetCommit|1.219551ms
-   6|blockchain|ExecBlock|4.445475ms
+   1|blockchain|CheckSign|2.235µs
+   2|blockchain|CheckTxDup|522.664µs
+   3|merkle|CalcMerkleRootCache|422.517µs
+   4|exector|ExecTx|1.800693ms
+   5|merkle|CalcMerkleRoot|76.752µs
+   6|store|ExecKVMemSet|91.627µs
+   7|store|ExecKVSetCommit|3.22084ms
+   8|blockchain|ExecBlock|7.105836ms
    
    
    * 每个块打包得交易数为 100左右时
    
    序号|模块|函数名|耗时统计
    ---|---|---|-----
-   1|blockchain|CheckTxDup|8.210192ms
-   2|exector|ExecTx|10.282714ms
-   3|merkle|CalcMerkleRoot|538.193µs
-   4|store|ExecKVMemSet|385.73µs
-   5|store|ExecKVSetCommit|15.319905ms
-   6|blockchain|ExecBlock|36.329451ms
+   1|blockchain|CheckSign|2.095µs
+   2|blockchain|CheckTxDup|2.719762ms
+   3|merkle|CalcMerkleRootCache|390.333µs
+   4|exector|ExecTx|13.082559ms
+   5|merkle|CalcMerkleRoot|782.553µs
+   6|store|ExecKVMemSet|583.51µs
+   7|store|ExecKVSetCommit|8.227311ms
+   8|blockchain|ExecBlock|26.898224ms
    
    
    * 每个块打包得交易数为2000左右时
    
    序号|模块|函数名|耗时统计
    ---|---|---|-----
-   1|blockchain|CheckTxDup|186.300685ms
-   2|exector|ExecTx|252.756901ms
-   3|merkle|CalcMerkleRoot|9.734936ms
-   4|store|ExecKVMemSet|6.118077ms
-   5|store|ExecKVSetCommit|15.228285ms
-   6|blockchain|ExecBlock|478.434048ms
-   
+   1|blockchain|CheckSign|2.305µs
+   2|blockchain|CheckTxDup|108.72353ms
+   3|merkle|CalcMerkleRootCache|4.237428ms
+   4|exector|ExecTx|266.02094ms
+   5|merkle|CalcMerkleRoot|10.712475ms
+   6|store|ExecKVMemSet|5.801295ms
+   7|store|ExecKVSetCommit|19.436243ms
+   8|blockchain|ExecBlock|418.780469ms
    
    * 每个块打包得交易数为5000左右时
    
+   
    序号|模块|函数名|耗时统计
    ---|---|---|-----
-   1|blockchain|CheckTxDup|586.847787ms
-   2|exector|ExecTx|913.344191ms
-   3|merkle|CalcMerkleRoot|27.45629ms
-   4|store|ExecKVMemSet|15.262978ms
-   5|store|ExecKVSetCommit|31.636432ms
-   6|blockchain|ExecBlock|1.589942026s
+   1|blockchain|CheckSign|1.746µs
+   2|blockchain|CheckTxDup|450.19369ms
+   3|merkle|CalcMerkleRootCache|9.727373ms
+   4|exector|ExecTx|726.817774ms
+   5|merkle|CalcMerkleRoot|23.826088ms
+   6|store|ExecKVMemSet|12.768735ms
+   7|store|ExecKVSetCommit|359.795668ms
+   8|blockchain|ExecBlock|1.588617707s
+   
 
    这样一估算，单节点的情况下，系统的实际tps在4000到5000左右
