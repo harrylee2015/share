@@ -229,5 +229,12 @@ ExecBlock中 ExecTx 和 ExecKVMemSet，ExecKVSetCommit 耗时比较明显
    
    * 每个块打包得交易数为5000左右时
    
-   
+## 通过分析blockchain模块各个函数执行耗时，主要耗时函数
+  
+  
+   序号|模块|函数名
+   ---|---|---
+   1|blockchain|maybeAcceptBlock
+   2|blockchain|connectBlock
+
 
