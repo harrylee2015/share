@@ -1,3 +1,7 @@
 # Harmony区块链的分片扩展之路
 
 [Harmony区块链的分片扩展之路](https://mp.weixin.qq.com/s?__biz=MzAwOTk1NjM0NQ==&mid=2247487043&idx=1&sn=fc2d14e7d4adcf82fae7cacfe529a71e&chksm=9b56f0d5ac2179c375b0e6a862ab6458c24042fdc09bc3bcd963c25e0362cd0d35a44ba63aa9&mpshare=1&scene=1&srcid=0703y4Lc6ylXDUTmmVmIuvVy&key=7393e0b0f5ed79b36c8ab7b2ab777c353af36ee651295c3ef9a089f946215a36d0880cc2c11caff523636180a4ec5265e85931f6bf0c6c6eb4d8cad56a2dfefd4eee9f5320591ffcac511ef82b7cd216&ascene=1&uin=MTM3NTg3NjEyMg%3D%3D&devicetype=Windows+10&version=62060833&lang=zh_CN&pass_ticket=YFznKAudlcVM77Jt2jnYOOO%2BR4DZ2shcjmgoRp7KoC%2FvBzvRt0e2txe%2Fg7Q1S%2FJd)
+
+[harmony团队实现的go版本的纠错码库](https://github.com/harmony-one/go-raptorq)
+
+[harmony团队实现的VDF可验证延迟函数](https://github.com/harmony-one/vdf)
