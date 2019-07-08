@@ -22,7 +22,7 @@ Harmony视以太坊2.0为最大的竞争对手，目标是打造一个基于分�
 一个小时之后才会被计算出来。除非提前一个小时知道随机因子，或者不可能提前预测，随机结果。目前
 [harmony团队实现一个版本的VDF可验证延迟函数](https://github.com/harmony-one/vdf)
 
-**什么是raptor码**
+**raptor码**
 
 [harmony团队实现的go版本的纠错码库](https://github.com/harmony-one/go-raptorq)
 
