@@ -96,7 +96,7 @@ export GOPROXY=https://mirrors.aliyun.com/goproxy
 ```
 4.修改go.mod文件，通过replace替换依赖包的地址
 
-如下所示，一般访问不了的库，在github上面都有开源的地址，只需替换一下，增加地址重定向即可，不知道版本的话就填latest最新的
+**如下所示，一般访问不了的库，在github上面都有开源的地址，只需替换一下，增加地址重定向即可，不知道版本的话,最好实际去验证一下，根本github上面发布版本的commit hash指定，不要轻易用latest，坑很多，很用vendor地下的依赖旧版本，在新版本中接口会有改动，虽然打包通过，但一编译的时候会报各种错误。**
 
 ```bash
 replace (
