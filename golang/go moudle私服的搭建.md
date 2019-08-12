@@ -47,8 +47,8 @@ go build -o proxy
 nohup ./autens >console.log 2>&1 &
 ```
 私服就搭建好了，注意需要放行默认的3000端口
-当外面机器需要用该私服下载一些依赖时
-只需导入如下变量，执行下载命令
+
+当外面机器需要用该私服下载一些依赖时，只需导入如下变量，执行下载命令
 ```bash
 //开启 module功能
 export GO111MODULE=on
