@@ -25,6 +25,7 @@ source /etc/profile
 ```
 
 私服是用的是谷歌开源的项目[Athens](https://github.com/gomods/athens)搭建的，雅典娜。
+
 克隆下载项目代码
 ```bash
 git clone https://github.com/gomods/athens
@@ -52,5 +53,5 @@ nohup ./autens >console.log 2>&1 &
 //开启 module功能
 export GO111MODULE=on
 //私服代理地址,用于下载相关依赖
-export GOPROXY=http://xxxx:30000
+export GOPROXY=http://xxxx:3000
 ```
