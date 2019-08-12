@@ -87,7 +87,7 @@ export GOPROXY=http://xxxx:3000
 ```
 3.修改go.mod文件，通过replace替换依赖包的地址
 
-如下所示，一般访问不了的库，在github上面都有开源的地址，只需替换一下，增加地址重定向即可
+如下所示，一般访问不了的库，在github上面都有开源的地址，只需替换一下，增加地址重定向即可，不知道版本的话就填latest最新的
 
 ```bash
 replace (
@@ -109,6 +109,9 @@ replace (
         google.golang.org/appengine => github.com/golang/appengine v1.6.1-0.20190515044707-311d3c5cf937
         google.golang.org/genproto => github.com/google/go-genproto v0.0.0-20190522204451-c2c4e71fbf69
         google.golang.org/grpc => github.com/grpc/grpc-go v1.21.0
+        go.etcd.io/bbolt => github.com/etcd-io/bbolt latest
+        go.etcd.io/etcd => github.com/etcd-io/etcd latest
+
 )
 
 ```
