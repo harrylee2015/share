@@ -65,8 +65,17 @@ export GOPROXY=http://xxxx:3000
 ```bash
  略
 ```
-
-2.接着初始化init go.mod
+2.导入代理
+这里提供三个
+```bash
+//go 提供的官方代理
+export GOPROXY=https://proxy.golang.org/
+//第三方组织提供的
+export GOPROXY=https://goproxy.io
+//阿里云提供的代理
+export GOPROXY=https://mirrors.aliyun.com/goproxy
+```
+3.接着初始化init go.mod
 ```bash
  cd plugin
  //由于原来的项目地下有vendor目录，mod会自动去copy转换，但是由于一些库的地址不能直接访问，所以肯定会失败，只会生成一个go.mod文件
@@ -85,7 +94,7 @@ export GOPROXY=http://xxxx:3000
 
  
 ```
-3.修改go.mod文件，通过replace替换依赖包的地址
+4.修改go.mod文件，通过replace替换依赖包的地址
 
 如下所示，一般访问不了的库，在github上面都有开源的地址，只需替换一下，增加地址重定向即可，不知道版本的话就填latest最新的
 
@@ -115,7 +124,7 @@ replace (
 )
 
 ```
-重新执行打包命令,如还有问题，可根据提示信息进行处理
+5.重新执行打包命令,如还有问题，可根据提示信息进行处理
 
 ```bash
 go mod tidy
