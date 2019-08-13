@@ -140,3 +140,18 @@ replace github.com/XiaoMi/pegasus-go-client => github.com/harrylee2015/pegasus-g
 ```bash
 go mod tidy
 ```
+6.下载依赖包
+
+```bash
+//官方代理，速度很快
+export GOPROXY=https://proxy.golang.org/
+
+go mod download
+
+```
+
+## 参考资料
+
+[雅典简介及使用说明](https://docs.gomods.io/)
+
+[go module使用入门](https://www.jianshu.com/p/bbed916d16ea)
