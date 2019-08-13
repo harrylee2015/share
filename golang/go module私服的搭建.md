@@ -124,6 +124,17 @@ replace (
 )
 
 ```
+**以上的被墙掉的包，一般通过官方代理，可以直接拉取，无需用replace进行替换
+replace主要场景还是用于一些公共开源库，由于社区不继续维护了，存在一些bug,比如你在此基础之上修复了bug,可通过replace
+进行替换，比如下图:**
+
+```bash
+replace github.com/NebulousLabs/Sia => github.com/harrylee2015/Sia v1.3.5-0.20190813023053-d19377a9d04e
+
+replace github.com/XiaoMi/pegasus-go-client => github.com/harrylee2015/pegasus-go-client v0.0.0-20190813065714-23ace0b535b8
+
+```
+
 5.重新执行打包命令,如还有问题，可根据提示信息进行处理
 
 ```bash
