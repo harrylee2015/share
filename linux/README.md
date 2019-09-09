@@ -1,1 +1,1 @@
-# LINUX 使用技巧
+# LINUX 杂记
