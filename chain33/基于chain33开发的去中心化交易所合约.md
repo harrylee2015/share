@@ -38,3 +38,20 @@
  ## 问题
  
   1.撮合过程中存在许多匹配的挂单也共用当前系统中生成的index,因此localdb存储的索引key要重新设计
+
+## 存储模型设计
+
+ https://github.com/harrylee2015/plugin/blob/exchange/plugin/dapp/exchange/proto/exchange.proto
+
+
+## localdb索引设计
+
+ https://github.com/harrylee2015/plugin/blob/exchange/plugin/dapp/exchange/executor/kv.go
+
+## 查询接口设计
+
+ https://github.com/harrylee2015/plugin/blob/exchange/plugin/dapp/exchange/executor/query.go
+
+
+
+
