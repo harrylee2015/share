@@ -24,11 +24,11 @@
   3|多方位的查询接口，交易对，深度，单号查询
   4|设计先进先出的队列
 
-## 查询接口设计
+## 查询接口
 
  1.提供指定交易对的市场深度查询
  
- 2.提供指定交易对挂单查询
+ 2.提供指定交易对挂单查询(系统内部使用）
  
  3.提供根据挂单状态查询用户自己最新的挂单信息
 
@@ -53,5 +53,7 @@
  https://github.com/harrylee2015/plugin/blob/exchange/plugin/dapp/exchange/executor/query.go
 
 
+## exchange合约执行流程
 
+![exchange合约执行流程图](./resource/exchange.png)
 
