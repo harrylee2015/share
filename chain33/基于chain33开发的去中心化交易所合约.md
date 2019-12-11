@@ -225,7 +225,11 @@ message ReceiptExchange {
 
 ## 查询接口设计
 
- https://github.com/harrylee2015/plugin/blob/exchange/plugin/dapp/exchange/executor/query.go
+和proto文件中展示的那样，这里就略过
+
+[代码中的实现](https://github.com/harrylee2015/plugin/blob/exchange/plugin/dapp/exchange/executor/query.go)
+
+ 
 
 
 ## exchange合约执行流程
