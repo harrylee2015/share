@@ -52,6 +52,16 @@
 ## localdb索引设计
 
  https://github.com/harrylee2015/plugin/blob/exchange/plugin/dapp/exchange/executor/kv.go
+ 
+ |键|值|用途|说明|
+|-|-|-|-|
+|LODB-exchange-depth-{leftAsset}-{rightAsset}-{op}:{price}|资产交易对买/卖的深度|给用户提供查询，用于实时查询市场深度|变参为leftAsset，rightAsset，op (1为买，2为卖),价格(%0016 占16位,根据价格进行计算得来)|
+|LODB-exchange-order-{leftAsset}-{rightAsset}-{op}:{price}:{index}|挂单ID和index|记录具体的挂单orderID和index|变参为leftAsset，rightAsset，op (1为买，2为卖),价格,和index(%022d 比系统原有的多占了四位用于撮合时,根据顺序来区分和设置唯一的key)|
+|LODB-exchange-completed-{leftAsset}-{rightAsset}-{index}|挂单ID和index|记录已经成交挂单的orderID和最新index|变参为leftAsset，rightAsset，op index(%022d 多了四位用于撮合时,根据顺序来区分和设置唯一的key)|
+|LODB-exchange-addr:{addr}:{status}:{index}|挂单ID和index|根据地址和状态记录挂单的orderID和index，用于用户根据挂单状态自己地址下面的挂单详情|变参为addr，status(0 ordered,1 completd,2 revoked)，index (%022d 比系统原有的多占了四位用于撮合时,根据顺序来区分和设置唯一的key)|
+
+
+
 
 ## 查询接口设计
 
