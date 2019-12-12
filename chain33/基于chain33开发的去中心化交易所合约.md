@@ -232,3 +232,10 @@ message ReceiptExchange {
   
   3. 目前支持只limitOder限价挂单和revokeOrder 撤回挂单的交易， marketOrder市场挂单存在风险，暂时不支持
 
+
+
+## 遗留问题
+
+  1. 高于市场挂单,应该由按价格由低往高进行撮合
+  
+  2. 低于市场挂单,应该按价格由高往低进行撮合
