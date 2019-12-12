@@ -110,11 +110,6 @@ message Order {
     int64 index = 10;
 }
 
- //挂单价
-message OrderPrice {
-    double price  = 1;
-    int64  index = 2;
-}
 //单号
 message OrderID {
     string ID   = 1;
