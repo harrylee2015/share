@@ -57,7 +57,7 @@ message LimitOrder {
     //交易对
     asset rightAsset  = 2;
     //价格
-    float price  = 3;
+    double price  = 3;
     //总量
     int64 amount = 4;
     //操作， 1为买，2为卖
@@ -112,7 +112,7 @@ message Order {
 
  //挂单价
 message OrderPrice {
-    float price  = 1;
+    double price  = 1;
     int64  index = 2;
 }
 //单号
@@ -129,7 +129,7 @@ message QueryMarketDepth {
     //操作， 1为买，2为卖
     int32 op = 3;
     // 这里用价格作为索引值
-    float price  = 4;
+    double price  = 4;
     //单页返回多少条记录，默认返回10条,为了系统安全最多单次只能返回20条
     int32 count = 5;
 }
@@ -140,7 +140,7 @@ message MarketDepth {
     //资产2
     asset rightAsset = 2;
     //价格
-    float price  = 3;
+    double price  = 3;
     //总量
     int64 amount = 4;
     //操作， 1为买，2为卖
@@ -228,12 +228,12 @@ message ReceiptExchange {
 ![exchange合约执行流程图](./resource/exchange.png)
 
 
-## 总结
+## 注意事项
  
   1. 出于系统安全设计，系统设置了最大撮合深度，最大可撮合9999已有的挂单，但是执行过程中代码中做了限制，目前是设置100单，
   防止撮合的交易过多，导致产生的k,v数量剧增，产生的回执日志过大。
   
-  2. 挂单价格取值范围做了限制(0,1e7),精度到小数点后7位，与系统精度保持一致
+  2. 挂单价格取值范围做了限制(1e-8,1e8),精度到小数点后8位，与系统精度保持一致
   
   3. 目前支持只limitOder限价挂单和revokeOrder 撤回挂单的交易， marketOrder市场挂单存在风险，暂时不支持
 
