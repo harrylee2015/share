@@ -72,7 +72,7 @@ https://github.com/hyperledger/fabric/-/blob/idemix/idemix_test.go
 3. 用户把自己之前生成的nym假名公布出去，别人可以用这个nym来验签
 
 
-整个流程应该是这样
+**整个流程**
 
 1. 用户首先把自己要证明的数据，通过发布协议生成一份零知识证明
 
