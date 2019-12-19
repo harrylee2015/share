@@ -28,3 +28,8 @@ Alice为了证明自己是合法的司机,大多时候她会把自己的驾照�
 
 ## 安全讨论
 
+
+
+
+[参考资料](https://hyperledger-fabric-cn.readthedocs.io/zh/latest/idemix.html)
+
