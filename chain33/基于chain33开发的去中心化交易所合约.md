@@ -203,6 +203,7 @@ message ReceiptExchange {
 leftAsset|交易对左边资产名称
 rightAsset|交易对右边资产名称
 op|买卖操作 1为买，2为卖
+status|挂单状态，0 ordered, 1 completed,2 revoked
 price|挂单价格，本是浮点型，经过处理变成整型，占位16 %016d
 orderID|单号，由系统自动生成，整型，占位22 %022d
 index|系统自动生成的index，占位22 %022d
