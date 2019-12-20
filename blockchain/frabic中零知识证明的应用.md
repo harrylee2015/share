@@ -72,9 +72,9 @@ https://github.com/hyperledger/fabric/-/blob/idemix/idemix_test.go
 
 
 
-**idemix工作方式（流程）**
+**流程**
 
-fabric中idemix工作流程主要如下图所示
+根据上面介绍，我们可以知道 fabric中idemix工作流程主要如下图所示
 
 ![idemix工作方式](../resource/idemix.png)
 
