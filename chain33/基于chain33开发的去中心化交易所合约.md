@@ -191,10 +191,10 @@ message ReceiptExchange {
  
  表名|主键|索引|用途|说明
  ---|---|---|---|---
- depth|price|nil|动态记录市场深度|主键price是复合主键由{leftAsset}-{rightAsset}-{op}:{price}构成
- order|orderID|market_order|实时动态维护更新市场上的的挂单|market_order是复合索引由{leftAsset}-{rightAsset}-{op}:{price}:{orderID}，当订单成交或者撤回时，该条订单记录和索引会从order表中自动删除
+ depth|price|nil|动态记录市场深度|主键price是复合主键由{leftAsset}:{rightAsset}:{op}:{price}构成
+ order|orderID|market_order|实时动态维护更新市场上的的挂单|market_order是复合索引由{leftAsset}:{rightAsset}:{op}:{price}:{orderID}，当订单成交或者撤回时，该条订单记录和索引会从order表中自动删除
  UserOrder|index|nil|动态记录维护更新用户自己地址下面的订单信息|index是复合索引由{addr}:{status}:{index}构成，当订单状态发生改变时，前状态的订单记录和索引会在UserOrder表中自动被删除，ordered,completed,revoked 三种状态下的订单索引信息都是有序维护更新，不会造成数据错乱
- completed|index|nil|实时记录某资产交易对下面最新成交的订单信息|index是复合索引由{leftAsset}-{rightAsset}-{index}构成
+ completed|index|nil|实时记录某资产交易对下面最新成交的订单信息|index是复合索引由{leftAsset}:{rightAsset}:{index}构成 
 
 
 [合约代码中的具体实现](https://github.com/harrylee2015/plugin/blob/exchange/plugin/dapp/exchange/executor/tables.go)
