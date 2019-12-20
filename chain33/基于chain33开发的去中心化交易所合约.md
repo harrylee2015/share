@@ -185,16 +185,17 @@ message ReceiptExchange {
  ```
  [具体proto文件](https://github.com/harrylee2015/plugin/blob/exchange/plugin/dapp/exchange/proto/exchange.proto)
 
-## 索引设计
+## 表设计
 
- |键|值|用途|说明|
-|-|-|-|-|
-|~~LODB-exchange-depth-{leftAsset}-{rightAsset}-{op}:{price}~~|资产交易对买/卖的深度|给用户提供查询，用于实时查询市场深度|变参为leftAsset，rightAsset，op (1为买，2为卖),价格(%0016 占16位,根据价格进行计算得来)|
-|~~LODB-exchange-order-{leftAsset}-{rightAsset}-{op}:{price}:{index}~~|挂单ID和index|记录具体的挂单orderID和index|变参为leftAsset，rightAsset，op (1为买，2为卖),价格,和index(%022d 比系统原有的多占了四位用于撮合时,根据顺序来区分和设置唯一的key)|
-|~~LODB-exchange-completed-{leftAsset}-{rightAsset}-{index}~~|挂单ID和index|记录已经成交挂单的orderID和最新index|变参为leftAsset，rightAsset，op index(%022d 多了四位用于撮合时,根据顺序来区分和设置唯一的key)|
-|~~LODB-exchange-addr:{addr}:{status}:{index}~~|挂单ID和index|根据地址和状态记录挂单的orderID和index，用于用户根据挂单状态自己地址下面的挂单详情|变参为addr，status(0 ordered,1 completd,2 revoked)，index (%022d 比系统原有的多占了四位用于撮合时,根据顺序来区分和设置唯一的key)|
-|mavl-exchange-orderID:{orderID}|挂单信息|存在状态数据库中，任何人都可以根据具体orderID来查询具体的挂单信息|变参为orderID(~~也就是交易的txhash~~)变为int64，由系统更具区块高度和index自动生成|
-全改为table方式实现
+ **市场深度表 marketDepth**
+ 
+ 表名|主键|索引|用途|说明
+ ---|---|---|---|---
+ depth|price|nil|动态记录市场深度|主键price是复合主键由{leftAsset}-{rightAsset}-{op}:{price}构成
+ order|orderID|market_order|实时动态维护更新市场上的的挂单|market_order是复合索引由{leftAsset}-{rightAsset}-{op}:{price}:{orderID}，当订单成交或者撤回时，该条订单记录和索引会从order表中自动删除
+ UserOrder|index|nil|动态记录维护更新用户自己地址下面的订单信息|index是复合索引由{addr}:{status}:{index}构成，当订单状态发生改变时，前状态的订单记录和索引会在UserOrder表中自动被删除，ordered,completed,revoked 三种状态下的订单索引信息都是有序维护更新，不会造成数据错乱
+ completed|index|nil|实时记录某资产交易对下面最新成交的订单信息|index是复合索引由{leftAsset}-{rightAsset}-{index}构成
+
 
 [合约代码中的具体实现](https://github.com/harrylee2015/plugin/blob/exchange/plugin/dapp/exchange/executor/tables.go)
 
