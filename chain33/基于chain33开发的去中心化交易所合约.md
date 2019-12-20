@@ -191,10 +191,21 @@ message ReceiptExchange {
  
  表名|主键|索引|用途|说明
  ---|---|---|---|---
- depth|price|nil|动态记录市场深度|主键price是复合主键由{leftAsset}:{rightAsset}:{op}:{price %016d}构成
- order|orderID|market_order|实时动态维护更新市场上的的挂单|market_order是复合索引由{leftAsset}:{rightAsset}:{op}:{price %016d}:{orderID %022d}，当订单成交或者撤回时，该条订单记录和索引会从order表中自动删除
- UserOrder|index|nil|动态记录维护更新用户自己地址下面的订单信息|index是复合索引由{addr}:{status}:{index %022d}构成，当订单状态发生改变时，前状态的订单记录和索引会在UserOrder表中自动被删除，ordered,completed,revoked 三种状态下的订单索引信息都是有序维护更新，不会造成数据错乱
- completed|index|nil|实时记录某资产交易对下面最新成交的订单信息|index是复合索引由{leftAsset}:{rightAsset}:{index %022d}构成 
+ depth|price|nil|动态记录市场深度|主键price是复合主键由{leftAsset}:{rightAsset}:{op}:{price}构成
+ order|orderID|market_order|实时动态维护更新市场上的的挂单|market_order是复合索引由{leftAsset}:{rightAsset}:{op}:{price}:{orderID}，当订单成交或者撤回时，该条订单记录和索引会从order表中自动删除
+ UserOrder|index|nil|动态记录维护更新用户自己地址下面的订单信息|index是复合索引由{addr}:{status}:{index}构成，当订单状态发生改变时，前状态的订单记录和索引会在UserOrder表中自动被删除，ordered,completed,revoked 三种状态下的订单索引信息都是有序维护更新，不会造成数据错乱
+ completed|index|nil|实时记录某资产交易对下面最新成交的订单信息|index是复合索引由{leftAsset}:{rightAsset}:{index}构成 
+
+**表中相关参数说明**
+
+参数名|说明
+----|----
+leftAsset|交易对左边资产名称
+rightAsset|交易对右边资产名称
+op|买卖操作 1为买，2为卖
+price|挂单价格，本是浮点型，经过处理变成整型，占位16 %016d
+orderID|单号，由系统自动生成，整型，占位22 %022d
+index|系统自动生成的index，占位22 %022d
 
 
 [合约代码中的具体实现](https://github.com/harrylee2015/plugin/blob/exchange/plugin/dapp/exchange/executor/tables.go)
