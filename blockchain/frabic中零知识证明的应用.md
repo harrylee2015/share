@@ -88,6 +88,7 @@ https://github.com/hyperledger/fabric/-/blob/idemix/idemix_test.go
 
 - 匿名交易签名。
   当客户或对等方需要签署交易时，它会生成一个新的不可链接的呈现令牌，该令牌：
+  
    1）签署交易内容
    
    2）证明拥有由CA颁发的有效ECert
