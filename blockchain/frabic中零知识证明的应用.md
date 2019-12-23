@@ -103,6 +103,16 @@ https://github.com/hyperledger/fabric/-/blob/idemix/idemix_test.go
 
 ![idemix对比](../resource/idemix-ca.png)
 
+- 共同点：
+
+   都需要一个权威的机构去背书
+   
+- 区别：
+
+   X509中所有属性对外可见
+   
+   idemix中可以通过身份混淆的方式，采用不同的假名对外只暴露一部分属性，但是外部人员没法通过假名进行拼接，推测出所有属性。
+
 
 ## 安全讨论
 
