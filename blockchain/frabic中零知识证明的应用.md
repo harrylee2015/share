@@ -99,6 +99,9 @@ https://github.com/hyperledger/fabric/-/blob/idemix/idemix_test.go
    使用CA的公钥验证令牌。
 
 
+**与X509CA的对比**
+
+![idemix对比](../resource/idemix-ca.png)
 
 
 ## 安全讨论
