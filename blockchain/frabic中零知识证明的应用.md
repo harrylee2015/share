@@ -123,9 +123,7 @@ https://github.com/hyperledger/fabric/-/blob/idemix/idemix_test.go
 可以通过在黑名单(所谓的证书撤销列表，或CRL)中添加一个唯一的证书ID来撤销X.509证书，并在验证期间检查该证书是否不在当前CRL上。
 由于通过标准CRL为撤销检查显示唯一的标识符会破坏不可链接性，身份混合器实现了保护隐私的撤销机制，该机制允许验证者以零知识的方式检查凭证是否被撤销(凭证没有列入黑名单)，即，而不会破坏未撤销用户的不可链接性。
 
-**现有实现** 
-
-  权威机构通过CreateCRL (Credential Revocation Information)，创建一个CRL,里面包含了epoch，epochPK,epochPKSig,RevocationData,用户通过RA的公钥来对CRL进行验证。验证数据在这个epoch内是否有效。
+ 权威机构通过CreateCRL (Credential Revocation Information)，创建一个CRL,里面包含了epoch，epochPK,epochPKSig,RevocationData,用户通过RA的公钥来对CRL进行验证。验证数据在这个epoch内是否有效。
 
 
 ## 安全讨论
