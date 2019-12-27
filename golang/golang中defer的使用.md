@@ -11,8 +11,6 @@ defer语句并不会马上执行，而是会进入一个栈，函数 return 前�
 ## 踩坑点
 
 
-
-
 使用 defer 最容易采坑的地方是和**带命名返回参数**的函数一起使用时
 
 ```
@@ -36,3 +34,6 @@ return xxx
 2. 调用 defer 函数
 3. 空的 return
 ```
+
+详细可以阅读seekload老师写的这篇文章[defer不知道的细节](https://mp.weixin.qq.com/s?__biz=MzI2MDA1MTcxMg==&mid=2648466918&idx=2&sn=151a8135f22563b7b97bf01ff480497b&chksm=f2474389c530ca9f3dc2ae1124e4e5ed3db4c45096924265bccfcb8908a829b9207b0dd26047&mpshare=1&scene=1&srcid=1227gCWEHLJz4UGpHTosBgPG&sharer_sharetime=1577409752758&sharer_shareid=2b86561e1950790af184ab7b506f6455&key=9178b5e3f94ce552d995a39049695892eaf484f77eccfb5aad9cfa4415d5197b2b1578f7a1279d21ddfdc921262090214106a58e72a03792c45cdb3aac0f878e9055a2b13ca2b0c7edf605cdb9b703f4&ascene=1&uin=MTM3NTg3NjEyMg%3D%3D&devicetype=Windows+10&version=62070158&lang=zh_CN&exportkey=AUHQk9pxIL9WAR7TqBlWDa0%3D&pass_ticket=COL2SNRx%2FsDIDp%2Fqzbj0AoD%2BkrjdOviaLhe2s8RXH1aZeAHrtZmEkwFrfpiAcyrK)，案例结合，写的非常棒
+
