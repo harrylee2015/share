@@ -44,7 +44,7 @@
 
 docker-compose方式部署网络端口映射
 
-节点名称|ip|jrpc服务端口射到本地物理机服务端口号
+节点名称|集群内网ip|jrpc服务端口射到本地物理机服务端口号
 --|--|--
 chain33-tendermint0|172.30.0.2|8801
 chain33-tendermint1|172.30.0.3|8701
