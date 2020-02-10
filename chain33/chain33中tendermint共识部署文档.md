@@ -2,8 +2,34 @@
 
 ## 基于安装包的分部署部署
 
+1.通过政务平台，创建任务，添加节点，生成安装包
+  略
+2.各个节点下载上一步生成的专属安装包
 
+3.解压安装包
 
+ ```
+ tar -xvf xxx.tar.gz
+ ```
+ 
+ 
+4.启动服务
+ 
+ ```
+  #chain33和监控agent一起启动 
+  bash start.sh all
+  
+  #只启动chain33
+  bash start.sh chain33
+  
+ ```
+ 
+ 4.停止服务
+ 
+ ```
+  #停掉所有
+  bash stop.sh all
+ ```
 
 ## 基于docker-compose 方式单机版部署 tendermint共识集群
 
