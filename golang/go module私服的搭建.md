@@ -16,7 +16,8 @@ export GOROOT=/root/go
 export GOPATH=/root/gopath
 export PATH=.:$PATH:$GOROOT/bin:$GOPATH/bin
 #如下两个参数可配，可不配，因为我这里全部使用module模式，所以全加入到环境配置变量中去了
-export GOPROXY=https://goproxy.io
+#中国区代理
+export GOPROXY="https://goproxy.cn,direct"
 export export GO111MODULE=on
 ```
 配置完之后保存,执行如下命令是变量生效
