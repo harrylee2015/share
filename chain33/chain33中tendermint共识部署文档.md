@@ -38,12 +38,12 @@
 ```
  1.下载安装包
  
- weget xxx/chain33_v6.3.0_tendermit_docker-compse.tar.gz
+ weget https://zqpt-test.oss-cn-shanghai.aliyuncs.com/tendermint/chain33_tendermint_v6.3.0_docker-compose.tar.gz
  
  
  2.解压安装包
  
- tar -xvf chain33_v6.3.0_tendermit_docker-compse.tar.gz
+ tar -xvf chain33_tendermint_v6.3.0_docker-compose.tar.gz
  
  3.进入docker目录执行安装脚本（为了避免权限问题，以下命令请用root用户去执行）
  
@@ -60,6 +60,11 @@
  6.启动服务
  
  docker-compose up 
+
+ 或者后台启动
+ 
+ docker-compose up -d
+ 
  
  7.停掉服务
  
@@ -77,5 +82,6 @@ chain33-tendermint1|172.30.0.3|8701
 chain33-tendermint2|172.30.0.4|8601
 chain33-tendermint3|172.30.0.5|8501
 
+访问容器节点，可通过jrpc映射的物理机端口8801，8701，8601，8501进行访问
 
  
