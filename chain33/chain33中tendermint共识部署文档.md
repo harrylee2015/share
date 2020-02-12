@@ -1,6 +1,6 @@
 # chain33中tendermint共识部署文档
 
-## 基于安装包的分部署部署
+## 基于政务平台生成的安装包的分布式部署
 
 1.通过政务平台，创建任务，添加节点，生成安装包
   略
@@ -31,7 +31,7 @@
   bash stop.sh all
  ```
 
-## 基于docker-compose 方式单机版部署 tendermint共识集群
+## 基于docker-compose 方式单机版伪分布式部署
 
 *目前只支持在ubuntu系统上面部署*
 
