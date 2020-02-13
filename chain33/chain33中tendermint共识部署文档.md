@@ -42,7 +42,13 @@
 ```
  1.下载安装包
  
- weget https://zqpt-test.oss-cn-shanghai.aliyuncs.com/tendermint/chain33_tendermint_v6.3.0_docker-compose.tar.gz
+ 联盟链
+ 
+ wget https://zqpt-test.oss-cn-shanghai.aliyuncs.com/tendermint/chain33_tendermint_v6.3.0_docker-compose.tar.gz
+ 
+ 私链
+ 
+ wget https://zqpt-test.oss-cn-shanghai.aliyuncs.com/raft/chain33_raft_v6.3.0_docker-compose.tar.gz
  
  
  2.解压安装包
@@ -79,6 +85,8 @@
 
 docker-compose方式部署网络端口映射
 
+**联盟链**
+
 节点名称|集群内网ip|jrpc服务端口射到本地物理机服务端口号
 --|--|--
 chain33-tendermint0|172.30.0.2|8801
@@ -88,4 +96,12 @@ chain33-tendermint3|172.30.0.5|8501
 
 访问容器节点，可通过jrpc映射的物理机端口8801，8701，8601，8501进行访问
 
- 
+**私链**
+
+节点名称|集群内网ip|jrpc服务端口射到本地物理机服务端口号
+--|--|--
+chain33-raft1|172.20.0.2|8801
+chain33-raft2|172.20.0.3|8701
+chain33-raft3|172.20.0.4|8601
+
+访问容器节点，可通过jrpc映射的物理机端口8801，8701，8601进行访问
