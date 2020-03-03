@@ -10,20 +10,21 @@
  
 1. 安装（环境：ubuntu 16.04 ）
 
+```
 sudo apt-get install supervisor  （必须在root下执行）
-
+```
 2. 修改配置文件
 
 配置文件路径：/ect/supervisor/conf.d/
 
 添加配置守护进程的配置文件
-
+```
 vim chain33.conf
-
+```
 增加：
 
 1）添加被守护的程序
-
+```
 [program:chain33]
 command=chain33 -f chain33.toml  ;要执行的指令 
 directory=/root/lihailei        ;chain33的路径
@@ -31,25 +32,25 @@ autostart=true
 autorestart=true
 numprocs=1
 process_name=chain33        ;名称utorestart = true
-
+```
 2)修改 supervisord.conf
 
 开启查看进程的界面
+```
 [inet_http_server]
 port=0.0.0.0:7002
-
+```
 3）重启
-
+```
 supervisorctl reload
-
+```
 4)访问localhost:7002（与配置文件中的端口相同）即可查看当前正在运行的所有程序
 
  
 
 supervisord.conf 配置文件完整示例：
 
-; supervisor config file
-
+```
 [unix_http_server]
 file=/var/run/supervisor.sock ; (the path to the socket file)
 chmod=0700 ; sockef file mode (default 0700)_
@@ -79,5 +80,5 @@ serverurl=unix:///var/run/supervisor.sock ; use a unix:// URL for a unix socket
 
 [include]
 files = /etc/supervisor/conf.d/*.conf
-
+```
  
