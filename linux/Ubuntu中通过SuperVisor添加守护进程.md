@@ -84,3 +84,5 @@ serverurl=unix:///var/run/supervisor.sock ; use a unix:// URL for a unix socket
 files = /etc/supervisor/conf.d/*.conf
 ```
  
+ 
+ [参考链接](https://www.jianshu.com/p/0b9054b33db3)
