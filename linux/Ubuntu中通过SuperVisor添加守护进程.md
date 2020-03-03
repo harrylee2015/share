@@ -51,6 +51,8 @@ supervisorctl reload
 supervisord.conf 配置文件完整示例：
 
 ```
+; supervisor config file
+
 [unix_http_server]
 file=/var/run/supervisor.sock ; (the path to the socket file)
 chmod=0700 ; sockef file mode (default 0700)_
