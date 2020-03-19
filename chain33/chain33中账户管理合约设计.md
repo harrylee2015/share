@@ -35,5 +35,14 @@
 
 
 [金融分布式账户技术安全规范](http://www.cfstc.org/bzgk/gk/view/yulan.jsp?i_id=1855)
+
+**表设计**
+
+表名|主键|索引|用途|说明
+ ---|---|---|---|---
+ accountName表|accountName|status|记录账户信息|主键accountName是复合主键由{accountName}:{status}构成
+
+
+
   
   
