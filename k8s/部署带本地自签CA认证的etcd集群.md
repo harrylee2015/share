@@ -110,7 +110,6 @@ vim etcd-csr.json
 }
 
 如果 hosts 字段不为空则需要指定授权使用该证书的 IP 或域名列表，由于该证书后续被 etcd 集群使用，所以填写IP即可。
-因为本次部署etcd是单台，那么则需要填写单台的IP地址即可。
        
 #生成 etcd证书和私钥 
 cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=etcd etcd-csr.json | cfssljson -bare etcd
