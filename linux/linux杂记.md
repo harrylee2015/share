@@ -10,3 +10,9 @@ rm /etc/localtime
 
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ```
+
+## 查找根目录下大于100M的文件
+
+```
+find / -type f -size +100000000c -exec du -sh {} \;
+```
