@@ -1,5 +1,18 @@
 # kubernetes学习
 
+
+## k8s网络模型
+ 
+- 一个pod一个IP
+
+- 每个pod独立IP，pod内所有容器共享同一个IP
+
+- 所有容器都可以与所有其他容器通讯
+
+- 所有节点都可以与所有容器通讯
+
+
+
 ## kubernetes sheduler -preselect预选规则
 
  - NodiskConflict
