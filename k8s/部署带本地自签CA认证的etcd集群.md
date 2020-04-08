@@ -1,5 +1,9 @@
 # 部署带本地自签CA认证的etcd集群
 
+## 前言
+
+  etcd在生产环境中部署时往往都是采用https方式进行访问，这往往需要我们本地搞个自签证书，下面我们一起来学习一下如何去生成和部署
+
 
 ## 下载所需的包(cfssl,生成证书工具)
 
@@ -119,3 +123,6 @@ mkdir -p /etc/etcd/etcdSSL
 cp * /etc/etcd/etcdSSL
 
 ```
+
+
+**[etcd配置项说明](https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/configuration.md)**
