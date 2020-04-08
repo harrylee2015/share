@@ -8,8 +8,8 @@
 ## 下载所需的包(cfssl,生成证书工具)
 
 ```
-mkdir /usr/local/src/etcd/ 
-cd /usr/local/src/etcd/
+mkdir /opt/etcd/{cfg,ssl,bin} -p
+cd /opt/etcd/
 wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 
 wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 
 wget https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-amd64
@@ -26,8 +26,7 @@ ls /usr/local/bin/cfssl*
 ## 使用CFSSL创建CA证书以及etcd的TLS认证证书
 
 ```
-mkdir /usr/local/src/etcd/ssl
-cd /usr/local/src/etcd/ssl
+cd /opt/etcd/ssl
 
 #创建 CA 配置文件（ca-config.json）
 vim ca-config.json
@@ -69,7 +68,7 @@ vim ca-csr.json
       "C": "CN",
       "ST": "nanjing",
       "L": "nanjing",
-      "O": "etcd",
+      "O": "etcd-cluster",
       "OU": "System"
     }
   ]
@@ -104,7 +103,7 @@ vim etcd-csr.json
       "C": "CN",
       "ST": "nanjing",
       "L": "nanjing",
-      "O": "etcd",
+      "O": "etcd-cluster",
       "OU": "System"
     }
   ]
@@ -117,12 +116,25 @@ vim etcd-csr.json
 cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=etcd etcd-csr.json | cfssljson -bare etcd
 
 #将TLS 认证文件拷贝至证书目录下
-
-mkdir -p /etc/etcd/etcdSSL
-
-cp * /etc/etcd/etcdSSL
+ 
+ 就在本目录下生成得，所以不需要操作
 
 ```
+
+## 安装etcd
+
+
+ ```
+   # 到etcd项目下下载安装包
+  wget xxxx
+  
+  tar -xvf  xxx.tar.gz
+  
+  #将二进制文件移动到bin目录下
+  
+  cp etcd etcdctl /opt/etcd/bin
+  
+ ```
 
 
 **[etcd配置项说明](https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/configuration.md)**
