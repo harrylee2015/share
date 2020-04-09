@@ -259,4 +259,4 @@ lihailei
 **[etcd配置项说明](https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/configuration.md)**
 
 
-**[etcd集群搭建]（https://blog.csdn.net/deep_kang/article/details/90055395）**
+**[etcd集群搭建](https://blog.csdn.net/deep_kang/article/details/90055395)**
