@@ -229,10 +229,23 @@ WantedBy=multi-user.target
   ```
  ## 健康检查
  
- 
+ ```
+ #不携带证书访问不了
+ root@ubuntu-Vostro-3668:/opt/etcd/bin# ./etcdctl   member list
+{"level":"warn","ts":"2020-04-09T12:57:15.536+0800","caller":"clientv3/retry_interceptor.go:62","msg":"retrying of unary invoker failed","target":"endpoint://client-4d2e6b5c-0b51-4568-9e06-ce9a5a88b82b/127.0.0.1:2379","attempt":0,"error":"rpc error: code = DeadlineExceeded desc = latest connection error: connection closed"}
+Error: context deadline exceeded
+ #携带证书可以正常访问
+root@ubuntu-Vostro-3668:/opt/etcd/bin# ./etcdctl --cacert=../ssl/ca.pem  --cert=../ssl/etcd.pem  --key=../ssl/etcd-key.pem  member list
+326a8acae263a159, started, etcd2, https://192.168.0.121:2380, https://127.0.0.1:2379,https://192.168.0.121:2379, false
+91d478e5fe6d6d92, started, etcd1, https://192.168.0.112:2380, https://127.0.0.1:2379,https://192.168.0.112:2379, false
+d8ffe8217780058e, started, etcd3, https://192.168.0.149:2380, https://127.0.0.1:2379,https://192.168.0.149:2379, false
 
+ 
+ ```
+ 
 ## 参考资料
 
 **[etcd配置项说明](https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/configuration.md)**
 
-**[etcd集群搭建]（https://blog.csdn.net/deep_kang/article/details/90055395）
+
+**[etcd集群搭建]（https://blog.csdn.net/deep_kang/article/details/90055395）**
