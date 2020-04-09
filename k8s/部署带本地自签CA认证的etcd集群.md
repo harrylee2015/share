@@ -68,7 +68,7 @@ vim ca-csr.json
       "C": "CN",
       "ST": "nanjing",
       "L": "nanjing",
-      "O": "etcd-cluster",
+      "O": "k8s-etcd-cluster",
       "OU": "System"
     }
   ]
@@ -89,6 +89,7 @@ vim etcd-csr.json
 {
   "CN": "etcd",
   "hosts": [
+    "127.0.0.1",
     "192.168.0.112",
     "192.168.0.121",
     "192.168.0.149"
@@ -103,7 +104,7 @@ vim etcd-csr.json
       "C": "CN",
       "ST": "nanjing",
       "L": "nanjing",
-      "O": "etcd-cluster",
+      "O": "k8s-etcd-cluster",
       "OU": "System"
     }
   ]
@@ -122,6 +123,7 @@ cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=etcd
 
 ## 安装etcd
 
+ 以下是每个节点都要做
 
  ```
    # 到etcd项目下下载安装包
@@ -134,6 +136,103 @@ cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=etcd
   cp etcd etcdctl /opt/etcd/bin
   
  ```
+ 
+ ## 将之前生成得证书拷贝到 ssl目录下
+ 
+   略
+   
+## 编写 etcd.conf 配置文件   
+ 
+  vim /opt/etcd/cfg/etcd.conf
+  
+ ```
+ #[member]
+#etcd实例名称
+NAME="etcd1"
+#etcd数据保存目录，这个目录需要提前创好
+DATA_DIR="/var/lib/etcd"
+#集群内部通信使用得URL
+LISTEN_PEER_URLS="https://192.168.0.112:2380"
+#供外部客户端使用得URL
+LISTEN_CLIENT_URLS="https://192.168.0.112:2379,https://127.0.0.1:2379"
+#广播给外部客户端使用的url
+ADVERTISE_CLIENT_URLS="https://192.168.0.112:2379,https://127.0.0.1:2379"
 
+#[cluster]
+#广播给集群内其他成员访问得URL
+INITIAL_ADVERTISE_PEER_URLS="https://192.168.0.112:2380"
+#集群名称
+INITIAL_CLUSTER_TOKEN="k8s-etcd-cluster"
+#初始集群状态，new为新建集群
+INITIAL_CLUSTER_STATE="new"
+##初始集群成员列表
+INITIAL_CLUSTER="etcd1=https://192.168.0.112:2380,etcd2=https://192.168.0.121:2380,etcd3=https://192.168.0.149:2380"
+
+ ```
+ 
+ ## 编写systemd etcd.service服务文件
+  
+   系统不同，路径可能不一样，这里时ubutnu 16.04
+  ```
+  vim /lib/systemd/system/etcd.service
+ ```
+ 
+ ```
+ [Unit]
+Description=Etcd Server
+After=network.target
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+WorkingDirectory=/var/lib/etcd/
+EnvironmentFile=-/opt/etcd/cfg/etcd.conf
+# set GOMAXPROCS to number of processors
+ExecStart=/opt/etcd/bin/etcd --name ${NAME} \
+  --cert-file=/opt/etcd/ssl/etcd.pem \
+  --key-file=/opt/etcd/ssl/etcd-key.pem \
+  --peer-cert-file=/opt/etcd/ssl/etcd.pem \
+  --peer-key-file=/opt/etcd/ssl/etcd-key.pem \
+  --trusted-ca-file=/opt/etcd/ssl/ca.pem \
+  --peer-trusted-ca-file=/opt/etcd/ssl/ca.pem \
+  --advertise-client-urls ${ADVERTISE_CLIENT_URLS} \
+  --listen-peer-urls ${LISTEN_PEER_URLS} \
+  --listen-client-urls ${LISTEN_CLIENT_URLS} \
+  --initial-advertise-peer-urls ${INITIAL_ADVERTISE_PEER_URLS} \
+  --initial-cluster-token ${INITIAL_CLUSTER_TOKEN} \
+  --initial-cluster ${INITIAL_CLUSTER} \
+  --initial-cluster-state new \
+  --data-dir=${DATA_DIR}
+
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+  
+  ```
+  
+  ## 启动服务
+  
+  ```
+  # 重载配置
+  systemctl daemon-reload
+  
+  #启动
+  systemctl start  etcd
+  
+  #开机自启
+  systemctl enable etcd
+  
+  ```
+ ## 健康检查
+ 
+ 
+
+## 参考资料
 
 **[etcd配置项说明](https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/configuration.md)**
+
+**[etcd集群搭建]（https://blog.csdn.net/deep_kang/article/details/90055395）
