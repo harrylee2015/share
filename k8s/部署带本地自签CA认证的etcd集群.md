@@ -126,7 +126,7 @@ cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=etcd
  以下是每个节点都要做
 
  ```
-   # 到etcd项目下下载安装包
+   # 到etcd项目下下载安装包，这里我选择得是最新版本3.4.7
   wget xxxx
   
   tar -xvf  xxx.tar.gz
@@ -240,7 +240,18 @@ root@ubuntu-Vostro-3668:/opt/etcd/bin# ./etcdctl --cacert=../ssl/ca.pem  --cert=
 91d478e5fe6d6d92, started, etcd1, https://192.168.0.112:2380, https://127.0.0.1:2379,https://192.168.0.112:2379, false
 d8ffe8217780058e, started, etcd3, https://192.168.0.149:2380, https://127.0.0.1:2379,https://192.168.0.149:2379, false
 
- 
+#存储测试
+root@ubuntu-Vostro-3668:/opt/etcd/bin# ./etcdctl --cacert=../ssl/ca.pem  --cert=../ssl/etcd.pem  --key=../ssl/etcd-key.pem  put harrylee   lihailei
+OK
+root@ubuntu-Vostro-3668:/opt/etcd/bin# ./etcdctl --cacert=../ssl/ca.pem  --cert=../ssl/etcd.pem  --key=../ssl/etcd-key.pem  get  harrylee  
+harrylee
+lihailei
+
+#其他节点读取
+root@ubuntu054:/opt/etcd/bin# ./etcdctl --cacert=../ssl/ca.pem  --cert=../ssl/etcd.pem  --key=../ssl/etcd-key.pem  get  harrylee 
+harrylee
+lihailei
+
  ```
  
 ## 参考资料
