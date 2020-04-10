@@ -74,7 +74,7 @@ RequiredBy=docker.service
 
   ```
  
- ## 启动服务
+ 启动flannel服务
   
   ```
   systemctl daemon-reload
@@ -82,7 +82,71 @@ RequiredBy=docker.service
   systemctl start flanneld
   ```
   
+  ## 修改docker.service文件,增加DOCKER_OPT_BIP 启动项
+  
+  vim /lib/systemd/system/docker.service
+  ```
+  [Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+BindsTo=containerd.service
+After=network-online.target firewalld.service containerd.service
+Wants=network-online.target
+Requires=docker.socket
+
+[Service]
+Type=notify
+EnvironmentFile=-/run/flannel/docker
+# the default is not to use systemd for cgroups because the delegate issues still
+# exists and systemd currently does not support the cgroup feature set required
+# for containers run by docker
+ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock ${DOCKER_OPT_BIP}
+ExecReload=/bin/kill -s HUP $MAINPID
+TimeoutSec=0
+RestartSec=2
+Restart=always
+
+# Note that StartLimit* options were moved from "Service" to "Unit" in systemd 229.
+# Both the old, and new location are accepted by systemd 229 and up, so using the old location
+# to make them work for either version of systemd.
+StartLimitBurst=3
+
+# Note that StartLimitInterval was renamed to StartLimitIntervalSec in systemd 230.
+# Both the old, and new name are accepted by systemd 230 and up, so using the old name to make
+# this option work for either version of systemd.
+StartLimitInterval=60s
+
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+
+# Comment TasksMax if your systemd version does not support it.
+# Only systemd 226 and above support this option.
+TasksMax=infinity
+
+# set delegate yes so that systemd does not reset the cgroups of docker containers
+Delegate=yes
+
+# kill only the docker process, not all processes in the cgroup
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+  ```
+ 
+ 重启docker
+ 
+ ```
+ systemctl daemon-reload
+ 
+ systemctl restart docker
+ ```
+ 
   ## 检查是成功
+  
+  查看网卡信息
   
   ```
   ifconfig
@@ -114,5 +178,16 @@ flannel.1 Link encap:Ethernet  HWaddr 1e:6c:48:e6:f1:94
           RX bytes:672 (672.0 B)  TX bytes:504 (504.0 B)
 
   ```
- 
+  
+  不同主机不同网段进行ping测试
+  
+  ```
+  root@k8s-master:/# ping 10.0.13.0
+PING 10.0.13.0 (10.0.13.0) 56(84) bytes of data.
+64 bytes from 10.0.13.0: icmp_seq=1 ttl=64 time=0.500 ms
+64 bytes from 10.0.13.0: icmp_seq=2 ttl=64 time=0.248 ms
+64 bytes from 10.0.13.0: icmp_seq=3 ttl=64 time=0.350 ms
+64 bytes from 10.0.13.0: icmp_seq=4 ttl=64 time=0.275 ms
+
+  ```
  
