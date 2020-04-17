@@ -17,3 +17,10 @@ sed '/^test/d' text.txt|删除text.txt中以test开头的数据
 sed  -i '/^test/s/test//g' text.txt|在text.txt中删除以test开头的字符串
 sed -n '1p,$p' text.t|将text.txt中第一行，最后行打印
 sed -n '1,$p' text.t|将text.txt中第一行到最后行打印
+
+##  awk命令
+
+命令|解释
+---|---
+awk -Ftest '{print $2}' test|把text.txt中以test做切割，打印切割后第二列的内容
+
