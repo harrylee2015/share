@@ -5,14 +5,18 @@
 
 ```
 #!/bin/bash
-#节点数量
-NUM=5
-#选择网络 172.xx.xx.0 10.xx.xx.0
-NETWORK=172.30.0.0
 #color
 RED='\033[1;31m'
 GRE='\033[1;32m'
 NOC='\033[0m'
+#节点数量
+NUM=$1
+#选择网络 172.xx.xx.0 10.xx.xx.0
+NETWORK=$2
+# 设置默认值
+NUM=${NUM:=5}
+NETWORK=${NETWORK:=172.30.0.0}
+echo -e "${GRE} node nuber:$NUM   network:$NETWORK ${NOC}"
 WORKDIR=$(pwd)
 #生成私钥对
 ./chain33-cli valnode  init_keyfile -n $NUM
