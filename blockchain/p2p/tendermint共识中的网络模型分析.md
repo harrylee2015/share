@@ -4,7 +4,7 @@
 tendermint中共识模块网络复用了p2p网络，tendermint中的p2p网络严格上来讲，其实不算p2p，因为它本身不具备节点发现的功能，只是简单的拨号连接，只是在每次建立链接时，
 会用本地节点的公私钥做一次鉴权，通过对双方随机生成的公钥信息生成的challenge进行签名，验签通过的话，双方建立安全链接通讯，通讯密钥则由本地随机生成的密钥对的私钥和远程节点传输过来的随机生成的公钥混合生成的一个sharesecret，通讯内容则是对消息体的封装，有block,tx,heat，等等类型，通过不同的goroutine进行处理。
 
-![tendermint中通信模型]../../resource/secretcon.png)
+![tendermint中通信模型](../../resource/secretcon.png)
 
 
 **流程如下：**
