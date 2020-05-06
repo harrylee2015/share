@@ -4,7 +4,8 @@
 tendermint中共识模块网络复用了p2p网络，tendermint中的p2p网络严格上来讲，其实不算p2p，因为它本身不具备节点发现的功能，只是简单的拨号连接，只是在每次建立链接时，
 会用本地节点的公私钥做一次鉴权，通过对双方随机生成的公钥信息生成的challenge进行签名，验签通过的话，双方建立安全链接通讯，通讯密钥则由本地随机生成的密钥对的私钥和远程节点传输过来的随机生成的公钥混合生成的一个sharesecret，通讯内容则是对消息体的封装，有block,tx,heat，等等类型，通过不同的goroutine进行处理。
 
-![tendermint中通信模型](https://github.com/harrylee2015/share/blob/master/resource/secretcon.png)
+![tendermint中通信模型]../../resource/secretcon.png)
+
 
 **流程如下：**
 
@@ -26,6 +27,6 @@ libp2p网络与tendermint网络不同，libp2p是真正意义上的p2p网络，�
 
  序号|问题
  ---|---
- 1|共识节点网络权限问题，是否由配置文件中seeds去控制
+ 1|原有tendermint网络，共识节点权限是由配置文件去控制，切换成使用libp2p共识节点网络权限问题，是否由配置文件中seeds去控制
  2|现有的chain33 p2p网络协议与tendermint中的有差异，tendermint中原有的对消息数据流的加减密的那一套是否需要去掉，协议需要适配
  3|chain33消息队列需要增加新的消息事件
