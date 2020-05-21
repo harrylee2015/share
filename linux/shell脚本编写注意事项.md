@@ -24,3 +24,16 @@ sed -n '1,$p' text.t|将text.txt中第一行到最后行打印
 ---|---
 awk -Ftest '{print $2}' test|把text.txt中以test做切割，打印切割后第二列的内容
 
+## 数值类比较
+
+ 比较符|说明
+ ----|----
+ -eq | equal
+-ne | not equal
+-lt | less than
+-le | less than or equal
+-gt | greater than
+-ge | greater than or equal
+
+
+
