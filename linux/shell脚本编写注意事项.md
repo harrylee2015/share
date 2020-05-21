@@ -37,3 +37,4 @@ awk -Ftest '{print $2}' test|把text.txt中以test做切割，打印切割后第
 
 
 
+**[shell脚本语法备忘录](https://devhints.io/bash)**
