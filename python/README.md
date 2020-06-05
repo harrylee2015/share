@@ -19,3 +19,19 @@ pip freeze > requirements.txt| 该方法仅可以使用在虚拟环境中，会�
 pip install pipreqs|安装pipreqs 包
 pipreqs ./ --encoding=utf-8 --force | 表示覆盖该原有requirements.txt,只添加本项目有关的依赖
 
+## python中使用protobuf序列化
+
+ 1. 安装protoc二进制文件 
+ 
+    [ 二进制文件下载](https://github.com/protocolbuffers/protobuf/releases)
+ 
+ 2. 使用pip安装protobuf源码包
+ 
+    ```
+     python3 -m install protobuf
+    ```
+ 
+ 3. 赋值注意事项
+ 
+    **protobuf中如何对象不赋值的话，默认就为空**，不需要特殊处理
+
