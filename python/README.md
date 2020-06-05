@@ -30,8 +30,16 @@ pipreqs ./ --encoding=utf-8 --force | 表示覆盖该原有requirements.txt,只�
     ```
      python3 -m install protobuf
     ```
- 
+    
  3. 赋值注意事项
  
+    **对象赋值，需要逐个字段赋值，对象之间不可以直接赋值**
+ 
     **protobuf中如何对象不赋值的话，默认就为空**，不需要特殊处理
+    
+    
+ 4. 序列化与反序列化  
+ 
+    xxx.SerializeToString()   
+    xxx.ParseFromString()
 
