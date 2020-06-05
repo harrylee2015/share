@@ -1,5 +1,10 @@
 # python
 
+
+## python官方文档
+
+[中文文档](https://docs.python.org/zh-cn/3.7/using/index.html)
+
 ## python的版本管理工具pyenv
 
 [pyenv项目地址](https://github.com/pyenv/pyenv)
