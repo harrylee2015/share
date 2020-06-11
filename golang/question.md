@@ -26,3 +26,4 @@ make(T) 返回的初始化的 T，只能用于 slice，map，channel。
 
 3. golang内存模型
 
+   [golang interview questions](https://www.cnblogs.com/yulibostu/articles/12056197.html)
