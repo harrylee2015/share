@@ -66,3 +66,7 @@ RabbitMQ 最初起源于金融系统，用于在分布式系统中存储转发�
    
    
    6. RPC模式
+
+
+
+    [golang中测试用例]（https://github.com/harrylee2015/harry_tools/tree/master/docker/rabbitmq）
