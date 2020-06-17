@@ -69,4 +69,4 @@ RabbitMQ 最初起源于金融系统，用于在分布式系统中存储转发�
 
 
 
-    [golang中测试用例]（https://github.com/harrylee2015/harry_tools/tree/master/docker/rabbitmq）
+      [golang中测试用例](https://github.com/harrylee2015/harry_tools/tree/master/docker/rabbitmq)
