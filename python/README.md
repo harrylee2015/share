@@ -8,6 +8,46 @@
 ## python的版本管理工具pyenv
 
    [pyenv项目地址](https://github.com/pyenv/pyenv)
+   
+   
+   * 利用pyenv工具安装python
+   
+       ```
+          pyenv install 3.7.7
+    
+       ```
+    
+   * 下载加速
+    
+      ```
+       vim /home/harry/.pyenv/plugins/python-build/share/python-build/3.7.7
+       
+       将原来的 https://www.python.org/ftp
+       替换为  http://mirrors.sohu.com
+       
+      ```
+      
+      重新执行安装命令
+      
+      
+   * 错误处理
+    
+      ```
+       Last 10 log lines:
+       **kwargs).stdout
+       File "/tmp/python-build.20200617160756.12100/Python-3.7.7/Lib/subprocess.py", line 512, in run
+       output=stdout, stderr=stderr)
+         subprocess.CalledProcessError: Command '('lsb_release', '-a')' returned non-zero exit status          ...                                                                                            
+         Traceback (most recent call last):
+         File "/usr/bin/lsb_release", line 25, in <module>
+       import lsb_release
+          ModuleNotFoundError: No module named 'lsb_release'
+   
+      ```
+   
+   
+   
+   
 
 ## python的项目依赖管理工具pip使用
 
