@@ -13,5 +13,7 @@
 指令解释器Interpreter：解释执行编译后合约字节码，与一般虚拟机不同的是，EVM执行中有Gas的概念，用来解决停机和资源消耗问题，所以在解释器执行指令时，也会对计算相应指令的Gas消耗。解释器依据PC调用相应的指令，从堆栈、内存中获取该指令所需的操作数；如果属于简单指令（如：算术ADD、比较指令GT...），则解释器直接计算相应指令的结果；如果属于EVM语义的指令（如：SSTORE、CALL），则将操作数与StateDB或Enviroment Function进行交互，计算指令结果，然后将结果存入堆栈。
 Environment Function(简写ENV FUNC)：提供EVM特有指令的执行逻辑，使用指令的操作数、StateDB进行交互，计算执行结果（如：对于CALL指令，EVM先从堆栈中获取指令所需的操作数，将操作数和StateDB传入ENV FUNC，ENV FUNC使用自身的执行逻辑和传入数据，计算结果，返回给解释器）
 
+## evm执行流程
 
+![evm执行流程](../../resource/evm.jpg)
 
