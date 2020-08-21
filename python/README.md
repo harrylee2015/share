@@ -122,3 +122,89 @@ pipreqs ./ --encoding=utf-8 --force | 表示覆盖该原有requirements.txt,只�
     xxx.SerializeToString()   
     xxx.ParseFromString()
 
+## python中class实列化对象如何序列化json对象
+
+  * 自定义json序列化函数
+  
+  * 利用class中的__dict__字典属性，作为默认的匿名序列化函数
+  
+  下面一起看一个用例，分别展示通过这两种方式去实现class类的json序列化
+  
+  ```
+  # 账户信息
+class Account(object):
+    def __init__(self, currency: int, balance: int, frozen: int, addr: str):
+        self.currency = currency
+        self.balance = balance
+        self.frozen = frozen
+        self.addr = addr
+
+    # 自定义json序列化函数
+    def obj_json(self, obj) -> object:
+        return {
+            "currency": obj.currency,
+            "balance": obj.balance,
+            "frozen": obj.frozen,
+            "addr": obj.addr
+        }
+
+
+# 自定义反序函数
+def jsonToClass(obj: json) -> Account:
+    return Account(obj['currency'], obj['balance'], obj['frozen'], obj['addr'])
+
+
+
+if __name__ == '__main__':
+    account = Account(currency=0, balance=1, frozen=2, addr="")
+    json_str = json.dumps(account, default=account.obj_json)
+    print(json_str)
+    # 通过__dict__属性实现序列化
+    json_str = json.dumps(account, default=lambda account: account.__dict__)
+    print(json_str)
+    # 将json对象实例化成一个类对象
+    acc = json.loads(json_str, object_hook=jsonToClass)
+    print(type(acc))
+    print(acc.balance)
+    
+  ```
+
+
+
+
+## python中如何使用setup工具在 [pypi](https://pypi.org/)上发布自己的库
+
+  * [官方发布指导](https://packaging.python.org/tutorials/packaging-projects/)
+  
+  
+  **这里简单总结一下流程**
+  
+  1. 在[pypi](https://pypi.org/)注册账户
+  
+  2. 安装pip 工具
+  
+   ```
+   python3 -m pip install  --upgrade setuptools wheel
+   ```
+  
+  3. 构建项目setup.py文件，注意参考官方文档中目录路径
+    
+  4. 生成源码安装包
+   
+   ```
+   python3 setup.py sdist bdist_wheel
+   ```
+   
+  5. 注册项目
+   
+   ```
+   python3 setup.py register
+   ```
+   
+  6. 上传发布
+  
+   ```
+   python3 setup.py sdist upload
+   
+   ```
+   
