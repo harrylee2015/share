@@ -1,4 +1,14 @@
 # RabbitMQ
+<!-- TOC -->
+
+- [RabbitMQ](#rabbitmq)
+  - [RabbitMQ简介](#rabbitmq简介)
+  - [RabbitMQ的特点](#rabbitmq的特点)
+  - [RabbitMQ的工作模式](#rabbitmq的工作模式)
+  - [RabbitMQ的四种交换机类型](#rabbitmq的四种交换机类型)
+
+<!-- /TOC -->
+
 
 ## RabbitMQ简介
  
