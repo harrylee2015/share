@@ -1,10 +1,15 @@
 # question
 
-1. make 与 new 的区别
-new(T) 返回 T 的指针 *T 并指向 T 的零值。
-make(T) 返回的初始化的 T，只能用于 slice，map，channel。
+1. **make 与 new 的区别**
+   
+   new(T) 返回 T 的指针 *T 并指向 T 的零值。返回指针类型
 
-2. golang中struct是否可以比较
+   make(T) 返回的初始化的 T，只能用于 slice，map，channel。
+
+   *注意：make内置函数分配和初始化slice，map或chan类型的对象（仅）。 像new一样，第一个参数是类型，而不是值。 与new不同，make的返回类型与其参数的类型相同，而不是指向它的指针。 结果的规格取决于类型：*
+
+
+2. **golang中struct是否可以比较**
 
      **看结构体本身是否含有不能比较的成员变量**
    
@@ -52,10 +57,10 @@ make(T) 返回的初始化的 T，只能用于 slice，map，channel。
    
    * 通过context上下文是新啊并发控制
 
-2. goroutine的调度机制
+7. goroutine的调度机制
   
    [G,M,P模型](https://mp.weixin.qq.com/s/jFBorQ6fRopqmEK1voKGWA) 
 
-3. golang内存模型
+8. golang内存模型
 
    [golang interview questions](https://www.cnblogs.com/yulibostu/articles/12056197.html)

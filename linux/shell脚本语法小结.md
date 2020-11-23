@@ -35,6 +35,16 @@ awk -Ftest '{print $2}' test|把text.txt中以test做切割，打印切割后第
 -gt | greater than
 -ge | greater than or equal
 
+## eval命令
+
+  当我们在命令行前加上eval时，shell就会在执行命令之前扫描它两次，eval命令首先对先扫描命令行中所有的命令进行置换，然后再执行该命令。该命令使用余那些一次扫描无法实现其功能的变量。
 
 
-**[shell脚本语法备忘录](https://devhints.io/bash)**
+命令|解释
+---|---
+myfile="cat file";eval $myfile|打印file文件内容
+eval "cat <<EOF $(<chain33/chain33.toml) EOF" > tmp.toml | 替换配置文件变量 chain33.toml(chain33.toml中有一些$变量)
+
+
+
+## **[shell脚本语法备忘录](https://devhints.io/bash)**
