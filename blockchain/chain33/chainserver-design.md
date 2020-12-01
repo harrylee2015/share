@@ -31,3 +31,29 @@
  status|tinyint(4)|管理员状态，0正常，1删除
  create_time|bigint(20)|新建时间
  update_time|bigint(20)|更新时间
+
+**主链配置信息表chainserver_mainchain**
+
+字段|类型|说明
+---|---|--
+id |interger(11)|主键ID
+uid|varchar(32)|用户UID
+order_id|varchar(32)|订单编号
+consensus_type|int(1)|0:联盟链 1:私有链 2:平行链
+product_type|int(1)|产品类型 0 区块链  1区块链+云服务器
+deploy_type|int(1)|0:单机部署 1:集群部署
+chain_name|varchar(32)|链名称
+init_node_ip|varchar(1024)|初始化节点的IP用","号分割
+chain_version|varchar(32)|链的二进制版本包
+chain_url|varchar(512)|模版本下载地址
+down_url|varchar(1500)|配置文件包生成地址
+detail|varchar(10240)|操作详细信息当部署失败时，存储具体的失败原因
+create_time|bigint(20)|创建时间
+update_time|bigint(20)|更新时间
+
+
+
+**平行链配置信息表chainserver_parachain**
+
+字段|类型|说明
+---|---|--
