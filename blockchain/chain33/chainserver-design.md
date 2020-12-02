@@ -5,6 +5,8 @@
  功能|URI
  ----|-----
  创建管理员|chainserver/manager/create
+ 查询管理员|chainserver/manager/list
+ 删除管理员|chainserver/manager/delete
  初始化tendermint,raft,para区块链|chainserver/blockchain/init
  查看链信息|chainserver/blockchain/query
  添加tendermint,raft,para节点|chainserver/node/add
