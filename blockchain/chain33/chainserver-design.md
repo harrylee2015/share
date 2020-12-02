@@ -5,15 +5,12 @@
  功能|URI
  ----|-----
  创建管理员|chainserver/manager/create
- 初始化tendermint区块链|chainserver/tendermint/init
- 初始化raft     |chainserver/raft/init
- 初始化para     |chainserver/para/init
- 添加tendermint节点|chainserver/tendermint/add
- 添加raft节点|chainserver/raft/add
- 添加para节点|chainserver/para/add
- 删除tendermint节点|chainserver/tendermint/delete
- 删除raft节点|chainserver/raft/delete
- 删除para节点|chainserver/para/delete
+ 初始化tendermint,raft,para区块链|chainserver/blockchain/init
+ 查看链信息|chainserver/blockchain/query
+ 添加tendermint,raft,para节点|chainserver/node/add
+ 删除tendermint,raft,para节点|chainserver/node/delete
+ 查看链的节点信息|chainserver/node/list
+ 修改节点信息|chainserver/node/update
  
  ## 表设计
  
@@ -95,7 +92,7 @@ detail|varchar(10240)|操作详细信息当部署失败时，存储具体的失�
 create_time|bigint(20)|创建时间
 update_time|bigint(20)|更新时间
 
-**节点信息表 chainserver_node(只存储区块链+云服务器节点)**
+**节点信息表 chainserver_node**
 
 字段|类型|说明
 ---|---|--
