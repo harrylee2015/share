@@ -113,3 +113,17 @@ ssh_port|int|登录端口，默认22端口
 detail|varchar(10240)|操作详细信息当部署失败时，存储具体的失败原因
 create_time|bigint(20)|创建时间
 update_time|bigint(20)|更新时间
+
+
+**二进制包版本信息表 chainserver_version**
+
+字段|类型|说明
+---|---|--
+id |interger(11)|主键ID
+uid|varchar(32)|管理员用户UID
+package_name|varchar(255)|包名
+chain_url|varchar(255)|模版本下载地址
+status|tinyint(4)|状态 0：不可用，1：可用
+detail|varchar(10240)|操作详细信息
+create_time|bigint(20)|创建时间
+update_time|bigint(20)|更新时间
