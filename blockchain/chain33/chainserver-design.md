@@ -90,6 +90,70 @@
   {"code":"10001","msg":"参数错误","data":[]}
   ``` 
 
+  ### 初始化区块链
+ 
+ * [route] chainserver/blockchain/init
+ 
+ * [method] post
+ 
+ * [param] 参数
+ 
+ 参数名称|参数类型|参数文档|参数默认值
+ ------|------|------|-----
+ uid|string|用户uid|
+ mid|string|管理员id|
+ order_id|string|订单id|
+ consensus_type|int|0:联盟链 1:私有链  2:平行链|
+ product_type|int|产品类型 0 区块链  1区块链+云服务器
+ deploy_type|int|0:单机部署 1:集群部署|
+ title|string|链名称|
+ node_num|int|节点数量|
+ init_inner_ip|string|初始化集群时,节点内部ip,用“，”号分割|
+ init_outer_ip|string|初始化集群时,节点外部IP,用“，”号分割|
+ super_manager_addr|varchar(128)|管理员地址|
+ block_size|int|区块大小|tendermint共识独有，其他模块默认为0|
+ block_time_out|int(10)|tendermint共识独有，其他模块默认为0|
+ jrpc_bind_port|int|jrpc端口|默认8801
+ grpc_bind_port|int|grpc端口|默认8802
+ 
+ * [sucess] 响应
+ 
+  ```
+  {"code":"10000","msg":"sucess","data":[]}
+  ```
+ 
+ * [error] 响应
+ 
+  ```
+  {"code":"10001","msg":"参数错误","data":[]}
+  ``` 
+ ### 查看链信息（组合查询）
+ 
+ * [route] chainserver/blockchain/query
+ 
+ * [method] post
+ 
+ * [param] 参数
+ 
+ 参数名称|参数类型|参数文档|参数默认值
+ ------|------|------|-----
+ uid|string|用户uid|
+ consensus_type|int|0:联盟链 1:私有链  2:平行链|默认1
+ chain_id|string|链ID|null
+
+ 
+ * [sucess] 响应
+ 
+  ```
+  {"code":"10000","msg":"sucess","data":[{}]}
+  ```
+ 
+ * [error] 响应
+ 
+  ```
+  {"code":"10001","msg":"参数错误","data":[]}
+  ``` 
+  
  ## 表设计
  
 **管理员信息表chainserver_manager**
@@ -107,6 +171,7 @@
  create_time|bigint(20)|新建时间
  update_time|bigint(20)|更新时间
 
+
 **主链配置信息表chainserver_mainchain**
 
 字段|类型|说明
@@ -114,6 +179,7 @@
 id |interger(11)|主键ID
 uid|varchar(32)|用户UID
 order_id|varchar(32)|订单编号
+chain_id|varchar(32)|主链ID
 consensus_type|int(1)|0:联盟链 1:私有链 
 product_type|int(1)|产品类型 0 区块链  1区块链+云服务器
 deploy_type|int(1)|0:单机部署 1:集群部署
@@ -144,9 +210,10 @@ update_time|bigint(20)|更新时间
 
 字段|类型|说明
 ---|---|--
-id |interger(11)|主键 chain_id
+id |interger(11)|主键 
 uid|varchar(32)|用户UID
-mainchain_id|interger(11)|主链ID
+mainchain_id|varchar(32)|主链ID
+chain_id|varchar(32)|链ID
 order_id|varchar(32)|订单编号
 product_type|int(1)|产品类型 0 区块链  1区块链+云服务器
 deploy_type|int(1)|0:单机部署 1:集群部署
@@ -176,7 +243,7 @@ update_time|bigint(20)|更新时间
 ---|---|--
 id |interger(11)|主键ID
 uid|varchar(32)|用户UID
-chain_id|interger(11)|chain_id
+chain_id|varchar(32)|chain_id
 order_id|varchar(32)|订单编号
 consensus_type|int(1)|0:联盟链 1:私有链 2:平行链
 init_inner_ip|varchar(512)|节点内部ip
