@@ -14,6 +14,82 @@
  查看链的节点信息|chainserver/node/list
  修改节点信息|chainserver/node/update
  
+ ### 创建管理员
+ 
+ * [route] chainserver/manager/create
+ 
+ * [method] post
+ 
+ * [param] 参数
+ 
+ 参数名称|参数类型|参数文档|参数默认值
+ ------|------|------|-----
+ uid|string|用户uid|
+ name|string|管理员名称|
+ code|string|验证码|
+ 
+ * [sucess] 响应
+ 
+  ```
+  {"code":"10000","msg":"sucess","data":[]}
+  ```
+ 
+ * [error] 响应
+ 
+  ```
+  {"code":"10001","msg":"参数不对","data":[]}
+  ```
+  
+  ### 查询管理员
+ 
+ * [route] chainserver/manager/list
+ 
+ * [method] get
+ 
+ * [param] 参数
+ 
+ 参数名称|参数类型|参数文档|参数默认值
+ ------|------|------|-----
+ uid|string|用户uid|
+ 
+ * [sucess] 响应
+ 
+  ```
+  {"code":"10000","msg":"sucess","data":[{"id":1,"uid":"xxxxx","mid":"yyyxx","addr":"12345xxxxaddr","pubkey":"123xxxhxxxde","privkey":"xxeeaaabcc12344",...},...]}
+  ```
+ 
+ * [error] 响应
+ 
+  ```
+  {"code":"10001","msg":"参数错误","data":[]}
+  ``` 
+
+  
+  ### 删除管理员
+ 
+ * [route] chainserver/manager/delete
+ 
+ * [method] post
+ 
+ * [param] 参数
+ 
+ 参数名称|参数类型|参数文档|参数默认值
+ ------|------|------|-----
+ uid|string|用户uid|
+ mid|string|管理员id|
+ 
+ * [sucess] 响应
+ 
+  ```
+  {"code":"10000","msg":"sucess","data":[]}
+  ```
+ 
+ * [error] 响应
+ 
+  ```
+  {"code":"10001","msg":"参数错误","data":[]}
+  ``` 
+
  ## 表设计
  
 **管理员信息表chainserver_manager**
