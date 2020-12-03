@@ -2,21 +2,16 @@
 
 ## URI接口设计
 
- 功能|URI
+ 资源|URI
  ----|-----
- 创建管理员|chainserver/manager/create
- 查询管理员|chainserver/manager/list
- 删除管理员|chainserver/manager/delete
- 初始化tendermint,raft,para区块链|chainserver/blockchain/init
- 查看链信息|chainserver/blockchain/query
- 添加tendermint,raft,para节点|chainserver/node/add
- 删除tendermint,raft,para节点|chainserver/node/delete
- 查看链的节点信息|chainserver/node/list
- 修改节点信息|chainserver/node/update
+ 管理员|v1/chainserver/managers
+ 区块链|v1/chainserver/blockchains
+ 节点|v1/chainserver/nodes
+ 
  
  ### 创建管理员
  
- * [route] chainserver/manager/create
+ * [route] chainserver/managers
  
  * [method] post
  
@@ -28,7 +23,7 @@
  name|string|管理员名称|
  code|string|验证码|
  
- * [sucess] 响应
+ * [sucess] 响应  
  
   ```
   {"code":"10000","msg":"sucess","data":[]}
@@ -39,10 +34,15 @@
   ```
   {"code":"10001","msg":"参数不对","data":[]}
   ```
-  
+ 
+ * [example] 请求示例
+  ```
+  http://localhost:8801/v1/chainserver/manager?uid=1001xx&name=harrylee&code=4263
+  ```
+ 
   ### 查询管理员
  
- * [route] chainserver/manager/list
+ * [route] v1/chainserver/managers
  
  * [method] get
  
@@ -64,12 +64,16 @@
   {"code":"10001","msg":"参数错误","data":[]}
   ``` 
 
+  * [example] 请求示例
+  ```
+  http://localhost:8801/v1/chainserver/manager?uid=1001xx
+  ```
   
   ### 删除管理员
  
- * [route] chainserver/manager/delete
+ * [route] v1/chainserver/manager
  
- * [method] post
+ * [method] delete
  
  * [param] 参数
  
@@ -90,9 +94,14 @@
   {"code":"10001","msg":"参数错误","data":[]}
   ``` 
 
+  * [example] 请求示例
+  ```
+  http://localhost:8801/v1/chainserver/manager?uid=1001xx&&mid=xxxx
+  ```
+  
   ### 初始化区块链
  
- * [route] chainserver/blockchain/init
+ * [route] v1/chainserver/blockchain
  
  * [method] post
  
@@ -127,9 +136,47 @@
   ```
   {"code":"10001","msg":"参数错误","data":[]}
   ``` 
+  * [example] 请求示例, （参数放在body中)
+  ```
+  http://localhost:8801/v1/chainserver/blockchains
+  ```
+  
  ### 查看链信息（组合查询）
  
- * [route] chainserver/blockchain/query
+ * [route] v1/chainserver/blockchain
+ 
+ * [method] get
+ 
+ * [param] 参数
+ 
+ 参数名称|参数类型|参数文档|参数默认值
+ ------|------|------|-----
+ uid|string|用户uid|
+ consensus_type|int|0:联盟链 1:私有链  2:平行链|默认1
+ chain_id|string|链ID|null
+
+ 
+ * [sucess] 响应
+ 
+  ```
+  {"code":"10000","msg":"sucess","data":[{主链信息或者平行链信息}]}
+  ```
+ 
+ * [error] 响应
+ 
+  ```
+  {"code":"10001","msg":"参数错误","data":[]}
+  ``` 
+
+  * [example] 请求示例
+  
+   ```
+    http://localhost:8801/v1/chainserver/blockchains?uid=xxxx&consensus_type=0&chain_id=xxx
+   ``` 
+   ### 添加节点
+   
+ 
+ * [route] v1/chainserver/nodes
  
  * [method] post
  
@@ -139,7 +186,11 @@
  ------|------|------|-----
  uid|string|用户uid|
  consensus_type|int|0:联盟链 1:私有链  2:平行链|默认1
- chain_id|string|链ID|null
+ chain_id|string|链ID|
+ order_id|string|订单ID|
+ inner_ip|string|内网ip|
+ outer_ip|string|外网ip|
+ 
 
  
  * [sucess] 响应
@@ -154,6 +205,76 @@
   {"code":"10001","msg":"参数错误","data":[]}
   ``` 
   
+ * [example] 请求示例
+  ```
+    http://localhost:8801/v1/chainserver/nodes
+  ```  
+   ### 查看链的节点信息
+ 
+ * [route] v1/chainserver/nodes
+ 
+ * [method] get
+ 
+ * [param] 参数
+ 
+ 参数名称|参数类型|参数文档|参数默认值
+ ------|------|------|-----
+ uid|string|用户uid|
+ consensus_type|int|0:联盟链 1:私有链  2:平行链|默认1
+ chain_id|string|链ID|
+
+ 
+
+ 
+ * [sucess] 响应
+ 
+  ```
+  {"code":"10000","msg":"sucess","data":[{节点信息}]}
+  ```
+ 
+ * [error] 响应
+ 
+  ```
+  {"code":"10001","msg":"参数错误","data":[]}
+  ``` 
+  
+   * [example] 请求示例
+   ```
+  
+    http://localhost:8801/v1/chainserver/nodes?uid=xxxx&consensus_type=0&chain_id=xx01
+    
+   ``` 
+    
+  ### 删除节点
+ 
+ * [route] v1/chainserver/nodes/{node_id}
+ 
+ * [method] delete
+ 
+ * [param] 参数
+ 
+ 参数名称|参数类型|参数文档|参数默认值
+ ------|------|------|-----
+ uid|string|用户uid|
+ node_id|string|节点id|
+
+ 
+ * [sucess] 响应
+ 
+  ```
+  {"code":"10000","msg":"sucess","data":[{}]}
+  ```
+ 
+ * [error] 响应
+ 
+  ```
+  {"code":"10001","msg":"参数错误","data":[]}
+  ``` 
+ * [example] 请求示例
+  ```
+    http://localhost:8801/v1/chainserver/nodes/xxxx
+    
+  ```
  ## 表设计
  
 **管理员信息表chainserver_manager**
@@ -244,6 +365,7 @@ update_time|bigint(20)|更新时间
 id |interger(11)|主键ID
 uid|varchar(32)|用户UID
 chain_id|varchar(32)|chain_id
+node_id|varchar(32)|node_id
 order_id|varchar(32)|订单编号
 consensus_type|int(1)|0:联盟链 1:私有链 2:平行链
 init_inner_ip|varchar(512)|节点内部ip
