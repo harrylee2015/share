@@ -1,5 +1,9 @@
 # chainserver-design
 
+## chainserver功能需求分析
+
+![chainserver功能需求分析](http://assets.processon.com/chart_image/5fc486d41e08537a693967a1.png)
+
 ## URI接口设计
 
  资源|URI
@@ -223,9 +227,6 @@
  consensus_type|int|0:联盟链 1:私有链  2:平行链|默认1
  chain_id|string|链ID|
 
- 
-
- 
  * [sucess] 响应
  
   ```
@@ -244,7 +245,7 @@
     http://localhost:8801/v1/chainserver/nodes?uid=xxxx&consensus_type=0&chain_id=xx01
     
    ``` 
-    
+ 
   ### 删除节点
  
  * [route] v1/chainserver/nodes/{node_id}
@@ -275,6 +276,68 @@
     http://localhost:8801/v1/chainserver/nodes/xxxx
     
   ```
+  
+  ### 部署节点
+ 
+ * [route] v1/chainserver/nodes/{node_id}
+ 
+ * [method] post
+ 
+ * [param] 参数
+ 
+ 参数名称|参数类型|参数文档|参数默认值
+ ------|------|------|-----
+ uid|string|用户uid|
+ node_id|string|节点id|
+
+ 
+ * [sucess] 响应
+ 
+  ```
+  {"code":"10000","msg":"sucess","data":[{}]}
+  ```
+ 
+ * [error] 响应
+ 
+  ```
+  {"code":"10001","msg":"参数错误","data":[]}
+  ``` 
+ * [example] 请求示例
+  ```
+    http://localhost:8801/v1/chainserver/nodes/xxxx
+   
+  ```
+  
+    ### 查看节点信息
+ 
+ * [route] v1/chainserver/nodes/{node_id}
+ 
+ * [method] get
+ 
+ * [param] 参数
+ 
+ 参数名称|参数类型|参数文档|参数默认值
+ ------|------|------|-----
+ uid|string|用户uid|
+ node_id|string|节点id|
+
+ 
+ * [sucess] 响应
+ 
+  ```
+  {"code":"10000","msg":"sucess","data":{节点信息}}
+  ```
+ 
+ * [error] 响应
+ 
+  ```
+  {"code":"10001","msg":"参数错误","data":[]}
+  ``` 
+ * [example] 请求示例
+  ```
+    http://localhost:8801/v1/chainserver/nodes/xxxx
+  ``` 
+  
  ## 表设计
  
 **管理员信息表chainserver_manager**
