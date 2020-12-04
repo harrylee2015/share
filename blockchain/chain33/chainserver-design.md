@@ -377,13 +377,13 @@ current_inner_ip|varchar(1024)|当前的节点内网ip,增删都执行
 history_outer_ip|varchar(1024)|历史节点记录,只增不删
 current_outer_ip|varchar(1024)|当前的节点ip,增删都执行
 super_manager_aid|varchar(32)|管理员地址aid
-~~super_manager_addr|varchar(128)|管理员地址~~
+~~super_manager_addr~~|~~varchar(128)~~|~~管理员地址~~
 block_size|int(10)|区块大小
 block_time_out|int(10)|出块间隔，超时时间
 jrpc_bind_port|int|jrpc端口，默认8801
 grpc_bind_port|int|grpc端口，默认8802
 genesis_aid|varchar(32)|创世地址aid
-~~genesis_addr|varchar(128)|创世地址~~
+~~genesis_addr~~|~~varchar(128)~~|~~创世地址~~
 genesis_block_time|bigint(20) |创世区块时间
 params|varchar(1024)|预留配置参数
 chain_version|varchar(32)|链的二进制版本包
@@ -417,13 +417,13 @@ history_outer_ip|varchar(1024)|历史节点记录,只增不删
 current_outer_ip|varchar(1024)|当前的节点ip,增删都执行
 title|varchar(128)|平行链名称
 super_manager_aid|varchar(32)|管理员地址aid
-~~super_manager_addr|varchar(128)|管理员地址~~
+~~super_manager_addr~~|~~varchar(128)~~|~~管理员地址~~
 jrpc_bind_port|int|jrpc端口，默认8901
 grpc_bind_port|int|grpc端口，默认8902
 start_height|int|开始同步高度
 coin_symbol|varchar(32)|主代币符号
 genesis_aid|varchar(32)|创世地址aid
-~~genesis_addr|varchar(128)|创世地址~~
+~~genesis_addr~~|~~varchar(128)~~|~~创世地址~~
 genesis_block_time|bigint(20) |创世区块时间
 params|varchar(1024)|预留配置参数
 chain_version|varchar(32)|链的二进制版本包
