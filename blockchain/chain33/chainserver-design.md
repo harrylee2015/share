@@ -9,15 +9,14 @@
 
  资源|URI
  ----|-----
- 管理员|v1/chainserver/managers
+ 地址|v1/chainserver/addrs
  区块链|v1/chainserver/blockchains
  节点|v1/chainserver/nodes
  
  
- ### 创建管理员
+ ### 添加地址
  
- * [route] chainserver/managers
- 
+ * [route] chainserver/addrs
  * [method] post
  
  * [param] 参数
@@ -25,29 +24,30 @@
  参数名称|参数类型|参数文档|参数默认值
  ------|------|------|-----
  uid|string|用户uid|
- name|string|管理员名称|
+ name|string|地址名称|
  code|string|验证码|
  
  * [sucess] 响应  
  
   ```
-  {"code":"10000","msg":"sucess","data":[]}
+  {"status":"201","code":"10000","message":"sucess","data":{"addr":"xxxx","privkey":"xxxyyy"}}
   ```
  
  * [error] 响应
  
   ```
-  {"code":"10001","msg":"参数不对","data":[]}
+ {"status":"403","code":"100001","message":"错误的请求内容格式","data":null}
   ```
  
  * [example] 请求示例
   ```
-  http://localhost:8801/v1/chainserver/managers?uid=1001xx&name=harrylee&code=4263
+  http://localhost:8801/v1/chainserver/addrs?uid=1001xx&name=harrylee&code=4263
+  
   ```
  
-  ### 查询管理员
+  ### 查询地址
  
- * [route] v1/chainserver/managers
+ * [route] v1/chainserver/addrs
  
  * [method] get
  
@@ -60,21 +60,21 @@
  * [sucess] 响应
  
   ```
-  {"code":"10000","msg":"sucess","data":[{"id":1,"uid":"xxxxx","mid":"yyyxx","addr":"12345xxxxaddr","pubkey":"123xxxhxxxde","privkey":"xxeeaaabcc12344",...},...]}
+  {"status":"200","code":"10000","message":"sucess","data":[{"id":1,"uid":"xxxxx","mid":"yyyxx","addr":"12345xxxxaddr","pubkey":"123xxxhxxxde","privkey":"xxeeaaabcc12344",...},...]}
   ```
  
  * [error] 响应
  
   ```
-  {"code":"10001","msg":"参数错误","data":[]}
+  {"status":"401","code":"10001","message":"token验证错误","data":null}
   ``` 
 
   * [example] 请求示例
   ```
-  http://localhost:8801/v1/chainserver/manages?uid=1001xx
+  http://localhost:8801/v1/chainserver/addrs?uid=1001xx
   ```
   
-  ### 删除管理员
+  ### 删除地址
  
  * [route] v1/chainserver/manager
  
@@ -85,23 +85,23 @@
  参数名称|参数类型|参数文档|参数默认值
  ------|------|------|-----
  uid|string|用户uid|
- mid|string|管理员id|
+ aid|string|地址id|
  
  * [sucess] 响应
  
   ```
-  {"code":"10000","msg":"sucess","data":[]}
+  {"status":"205","code":"10000","message":"删除成功","data":null}
   ```
  
  * [error] 响应
  
   ```
-  {"code":"10001","msg":"参数错误","data":[]}
+  {"status":"401","code":"10001","msg":"token验证错误","data":null}
   ``` 
 
   * [example] 请求示例
   ```
-  http://localhost:8801/v1/chainserver/managers?uid=1001xx&&mid=xxxx
+  http://localhost:8801/v1/chainserver/addrs?uid=1001xx&&aid=xxxx
   ```
   
   ### 初始化区块链
@@ -133,13 +133,13 @@
  * [sucess] 响应
  
   ```
-  {"code":"10000","msg":"sucess","data":[]}
+  {"status":"201","code":"10000","msg":"区块链创建成功","data":null}
   ```
  
  * [error] 响应
  
   ```
-  {"code":"10001","msg":"参数错误","data":[]}
+  {"status":"403","code":"10001","msg":"参数错误","data":null}
   ``` 
   * [example] 请求示例, （参数放在body中)
   ```
@@ -164,13 +164,13 @@
  * [sucess] 响应
  
   ```
-  {"code":"10000","msg":"sucess","data":[{主链信息或者平行链信息}]}
+  {"status":"200","code":"10000","msg":"sucess","data":[{主链信息或者平行链信息}]}
   ```
  
  * [error] 响应
  
   ```
-  {"code":"10001","msg":"参数错误","data":[]}
+  {"status":"403","code":"10001","msg":"参数错误","data":null}
   ``` 
 
   * [example] 请求示例
@@ -201,13 +201,13 @@
  * [sucess] 响应
  
   ```
-  {"code":"10000","msg":"sucess","data":[{}]}
+  {"status":"201","code":"10000","msg":"sucess","data":null}
   ```
  
  * [error] 响应
  
   ```
-  {"code":"10001","msg":"参数错误","data":[]}
+  {"status":"403","code":"10001","msg":"参数错误","data":null}
   ``` 
   
  * [example] 请求示例
@@ -231,13 +231,13 @@
  * [sucess] 响应
  
   ```
-  {"code":"10000","msg":"sucess","data":[{节点信息}]}
+  {"status":"200","code":"10000","msg":"sucess","data":[{节点信息}]}
   ```
  
  * [error] 响应
  
   ```
-  {"code":"10001","msg":"参数错误","data":[]}
+  {"status":"403","code":"10001","msg":"参数错误","data":null}
   ``` 
   
    * [example] 请求示例
@@ -264,13 +264,13 @@
  * [sucess] 响应
  
   ```
-  {"code":"10000","msg":"sucess","data":[{}]}
+  {"status":"205","code":"10000","msg":"sucess","data":null}
   ```
  
  * [error] 响应
  
   ```
-  {"code":"10001","msg":"参数错误","data":[]}
+  {"status":"403","code":"10001","msg":"参数错误","data":null}
   ``` 
  * [example] 请求示例
   ```
@@ -295,13 +295,13 @@
  * [sucess] 响应
  
   ```
-  {"code":"10000","msg":"sucess","data":[{}]}
+  {"status":"202","code":"10000","msg":"sucess","data":[{}]}
   ```
  
  * [error] 响应
  
   ```
-  {"code":"10001","msg":"参数错误","data":[]}
+  {"status":"403","code":"10001","msg":"参数错误","data":null}
   ``` 
  * [example] 请求示例
   ```
@@ -326,13 +326,13 @@
  * [sucess] 响应
  
   ```
-  {"code":"10000","msg":"sucess","data":{节点信息}}
+  {"status":"200","code":"10000","msg":"sucess","data":{节点信息}}
   ```
  
  * [error] 响应
  
   ```
-  {"code":"10001","msg":"参数错误","data":[]}
+  {"status":"403","code":"10001","msg":"参数错误","data":null}
   ``` 
  * [example] 请求示例
   ```
@@ -341,18 +341,18 @@
   
  ## 表设计
  
-**管理员信息表chainserver_manager**
+**地址信息表chainserver_addr**
 
  字段|类型|说明
  ---|---|---
  id |interger(11)|主键ID
  uid|varchar(32)|用户UID
- mid|varchar(32)|管理员ID,必须唯一
- name|varchar(64)|管理员名称
- addr|varchar(128)|管理员地址
- pubkey|varchar(256)|管理员公钥
- privkey|varchar(256)|管理员私钥
- status|tinyint(4)|管理员状态，0正常，1删除
+ aid|varchar(32)|地址ID,必须唯一
+ name|varchar(64)|地址名称
+ addr|varchar(128)|地址
+ pubkey|varchar(256)|公钥
+ privkey|varchar(256)|私钥
+ status|tinyint(4)|地址状态，0正常，1删除
  create_time|bigint(20)|新建时间
  update_time|bigint(20)|更新时间
 
@@ -376,11 +376,15 @@ history_inner_ip|varchar(1024)|历史节点记录,只增不删
 current_inner_ip|varchar(1024)|当前的节点内网ip,增删都执行
 history_outer_ip|varchar(1024)|历史节点记录,只增不删
 current_outer_ip|varchar(1024)|当前的节点ip,增删都执行
-super_manager_addr|varchar(128)|管理员地址
+super_manager_aid|varchar(32)|管理员地址aid
+~~super_manager_addr|varchar(128)|管理员地址~~
 block_size|int(10)|区块大小
 block_time_out|int(10)|出块间隔，超时时间
 jrpc_bind_port|int|jrpc端口，默认8801
 grpc_bind_port|int|grpc端口，默认8802
+genesis_aid|varchar(32)|创世地址aid
+~~genesis_addr|varchar(128)|创世地址~~
+genesis_block_time|bigint(20) |创世区块时间
 params|varchar(1024)|预留配置参数
 chain_version|varchar(32)|链的二进制版本包
 chain_url|varchar(512)|模版本下载地址
@@ -412,9 +416,15 @@ current_inner_ip|varchar(1024)|当前的节点内网ip,增删都执行
 history_outer_ip|varchar(1024)|历史节点记录,只增不删
 current_outer_ip|varchar(1024)|当前的节点ip,增删都执行
 title|varchar(128)|平行链名称
-super_manager_addr|varchar(128)|管理员地址
+super_manager_aid|varchar(32)|管理员地址aid
+~~super_manager_addr|varchar(128)|管理员地址~~
 jrpc_bind_port|int|jrpc端口，默认8901
 grpc_bind_port|int|grpc端口，默认8902
+start_height|int|开始同步高度
+coin_symbol|varchar(32)|主代币符号
+genesis_aid|varchar(32)|创世地址aid
+~~genesis_addr|varchar(128)|创世地址~~
+genesis_block_time|bigint(20) |创世区块时间
 params|varchar(1024)|预留配置参数
 chain_version|varchar(32)|链的二进制版本包
 chain_url|varchar(512)|模版本下载地址
