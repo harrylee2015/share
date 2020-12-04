@@ -321,6 +321,7 @@ params|varchar(1024)|预留配置参数
 chain_version|varchar(32)|链的二进制版本包
 chain_url|varchar(512)|模版本下载地址
 download_url|varchar(1500)|配置文件包生成地址
+status|tinyint(4)|安装包生成状态，0未处理，1表示成功，2表示失败
 detail|varchar(10240)|操作详细信息当部署失败时，存储具体的失败原因
 create_time|bigint(20)|创建时间
 update_time|bigint(20)|更新时间
@@ -354,6 +355,7 @@ params|varchar(1024)|预留配置参数
 chain_version|varchar(32)|链的二进制版本包
 chain_url|varchar(512)|模版本下载地址
 download_url|varchar(1500)|配置文件包生成地址
+status|tinyint(4)|安装包生成状态，0未处理，1表示成功，2表示失败
 detail|varchar(10240)|操作详细信息当部署失败时，存储具体的失败原因
 create_time|bigint(20)|创建时间
 update_time|bigint(20)|更新时间
@@ -374,6 +376,7 @@ type|tinyint(4)|节点类型，0：共识，1：普通的
 access_user|varchar(50)|登录用户
 access_password|varchar(50)|登录密码
 ssh_port|int|登录端口，默认22端口
+status|tinyint(4)|部署状态，0未部署，1表示成功，2表示部署失败
 detail|varchar(10240)|操作详细信息当部署失败时，存储具体的失败原因
 create_time|bigint(20)|创建时间
 update_time|bigint(20)|更新时间
