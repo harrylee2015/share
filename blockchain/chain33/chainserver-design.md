@@ -41,7 +41,7 @@
  
  * [example] 请求示例
   ```
-  http://localhost:8801/v1/chainserver/manager?uid=1001xx&name=harrylee&code=4263
+  http://localhost:8801/v1/chainserver/managers?uid=1001xx&name=harrylee&code=4263
   ```
  
   ### 查询管理员
@@ -70,7 +70,7 @@
 
   * [example] 请求示例
   ```
-  http://localhost:8801/v1/chainserver/manager?uid=1001xx
+  http://localhost:8801/v1/chainserver/manages?uid=1001xx
   ```
   
   ### 删除管理员
@@ -100,7 +100,7 @@
 
   * [example] 请求示例
   ```
-  http://localhost:8801/v1/chainserver/manager?uid=1001xx&&mid=xxxx
+  http://localhost:8801/v1/chainserver/managers?uid=1001xx&&mid=xxxx
   ```
   
   ### 初始化区块链
