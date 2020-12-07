@@ -76,7 +76,7 @@
   
   ### 删除地址
  
- * [route] v1/chainserver/manager
+ * [route] v1/chainserver/addrs
  
  * [method] delete
  
@@ -106,7 +106,7 @@
   
   ### 初始化区块链
  
- * [route] v1/chainserver/blockchain
+ * [route] v1/chainserver/blockchains
  
  * [method] post
  
@@ -148,7 +148,7 @@
   
  ### 查看链信息（组合查询）
  
- * [route] v1/chainserver/blockchain
+ * [route] v1/chainserver/blockchains
  
  * [method] get
  
