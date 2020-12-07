@@ -2,7 +2,7 @@
 
 ## chainserver功能需求分析
 
-![chainserver功能需求分析](http://assets.processon.com/chart_image/5fc486d41e08537a693967a1.png)
+![chainserver功能需求分析](../../resource/chainserver.png)
 
 
 ## URI接口设计
