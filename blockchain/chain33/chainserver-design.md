@@ -366,12 +366,13 @@ uid|varchar(32)|用户UID
 order_id|varchar(32)|订单编号
 chain_id|varchar(32)|链ID
 mainchain_id|varchar(32)|主链ID （主链的话就为空）
+title|varchar(32)|链名称
 consensus_type|int(1)|0:联盟链 1:私有链  2:para平行链
 chain_version|varchar(32)|链的二进制版本包
 chain_url|varchar(512)|模版本下载地址
 config_url|varchar(1500)|配置文件包生成地址
-status|tinyint(4)|安装包生成状态，0未处理，1表示成功，2表示失败
-detail|varchar(10240)|操作详细信息当部署失败时，存储具体的失败原因
+status|tinyint(4)|配置文件生成状态，0未处理，1表示成功，2表示失败
+detail|varchar(10240)|操作详细信息当生成配置文件失败时，存储具体的失败原因
 create_time|bigint(20)|创建时间
 update_time|bigint(20)|更新时间
 
@@ -382,17 +383,8 @@ update_time|bigint(20)|更新时间
 字段|类型|说明
 ---|---|--
 id |interger(11)|主键 
-uid|varchar(32)|用户UID
 chain_id|varchar(32)|链ID
-order_id|varchar(32)|订单编号
-product_type|int(1)|产品类型 0 区块链  1区块链+云服务器
-title|varchar(32)|链名称
 params|varchar(10240)|预留配置参数（key=value形式配置）
-chain_version|varchar(32)|链的二进制版本包
-chain_url|varchar(512)|模版本下载地址
-config_url|varchar(1500)|配置文件包生成地址
-status|tinyint(4)|安装包生成状态，0未处理，1表示成功，2表示失败
-detail|varchar(10240)|操作详细信息当部署失败时，存储具体的失败原因
 create_time|bigint(20)|创建时间
 update_time|bigint(20)|更新时间
 
@@ -406,8 +398,8 @@ chain_id|varchar(32)|chain_id
 node_id|varchar(32)|node_id
 order_id|varchar(32)|订单编号
 consensus_type|int(1)|0:联盟链 1:私有链 2:平行链
-init_inner_ip|varchar(512)|节点内部ip
-init_outer_ip|varchar(512)|节点外部IP
+init_inner_ip|varchar(128)|节点内部ip
+init_outer_ip|varchar(128)|节点外部IP
 type|tinyint(4)|节点类型，0：共识，1：普通的
 access_user|varchar(50)|登录用户
 access_password|varchar(50)|登录密码
