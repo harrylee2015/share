@@ -397,14 +397,13 @@ uid|varchar(32)|用户UID
 chain_id|varchar(32)|chain_id
 node_id|varchar(32)|node_id
 order_id|varchar(32)|订单编号
-consensus_type|int(1)|0:联盟链 1:私有链 2:平行链
-init_inner_ip|varchar(128)|节点内部ip
-init_outer_ip|varchar(128)|节点外部IP
+inner_ip|varchar(128)|节点内部ip
+outer_ip|varchar(128)|节点外部IP
 type|tinyint(4)|节点类型，0：共识，1：普通的
 access_user|varchar(50)|登录用户
 access_password|varchar(50)|登录密码
 ssh_port|int|登录端口，默认22端口
-status|tinyint(4)|部署状态，0未部署，1表示成功，2表示部署失败，3表示删除
+status|tinyint(4)|状态，0待创建，1表示成功，2表示失败，3表示删除
 config_url|varchar(1500)|配置文件包生成地址
 detail|varchar(10240)|操作详细信息当部署失败时，存储具体的失败原因
 create_time|bigint(20)|创建时间
