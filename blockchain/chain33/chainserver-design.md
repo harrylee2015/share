@@ -8,10 +8,11 @@
 ## URI接口设计
 
  资源|URI
- ----|-----
+ ----|----
  地址|v1/chainserver/addrs
  区块链|v1/chainserver/blockchains
  节点|v1/chainserver/blockchains/{chain_id}/nodes
+ 版本|v1/chainserver/chainversions
  
  
  ### 添加地址
@@ -25,7 +26,6 @@
  ------|------|------|-----
  uid|string|用户uid|
  name|string|地址名称|
- code|string|验证码|
  
  * [sucess] 响应  
  
@@ -39,11 +39,6 @@
  {"status":"403","code":"100001","message":"错误的请求内容格式","data":null}
   ```
  
- * [example] 请求示例
-  ```
-  http://localhost:8801/v1/chainserver/addrs?uid=1001xx&name=harrylee&code=4263
-  
-  ```
  
   ### 查询地址
  
@@ -118,8 +113,8 @@
  mid|string|管理员id|
  order_id|string|订单id|
  consensus_type|int|0:联盟链 1:私有链  2:平行链|
+ mainchain_id|string|主链id,如果没有
  product_type|int|产品类型 0 区块链  1区块链+云服务器
- deploy_type|int|0:单机部署 1:集群部署|
  title|string|链名称|
  node_num|int|节点数量|
  init_inner_ip|string|初始化集群时,节点内部ip,用“，”号分割|
@@ -181,7 +176,7 @@
    ### 添加节点
    
  
- * [route] v1/chainserver/nodes
+ * [route] v1/chainserver/blockchain/{chain_id}/nodes
  
  * [method] post
  
@@ -212,11 +207,11 @@
   
  * [example] 请求示例
   ```
-    http://localhost:8801/v1/chainserver/nodes
+    http://localhost:8801/v1/chainserver/blockchains/{chain_id}/nodes
   ```  
    ### 查看链的节点信息
  
- * [route] v1/chainserver/nodes
+ * [route] v1/chainserver/blockchains/{chain_id}/nodes
  
  * [method] get
  
@@ -249,7 +244,7 @@
  
   ### 删除节点
  
- * [route] v1/chainserver/nodes/{node_id}
+ * [route] v1/chainserver/blockchain/{chain_id}/nodes/{node_id}
  
  * [method] delete
  
@@ -274,13 +269,13 @@
   ``` 
  * [example] 请求示例
   ```
-    http://localhost:8801/v1/chainserver/nodes/xxxx
+    http://localhost:8801/v1/chainserver/blockchain/{chain_id}/nodes/xxxx
     
   ```
   
   ### 部署节点
  
- * [route] v1/chainserver/nodes/{node_id}
+ * [route] v1/chainserver/blockchain/{chain_id}/nodes/{node_id}
  
  * [method] post
  
@@ -305,13 +300,13 @@
   ``` 
  * [example] 请求示例
   ```
-    http://localhost:8801/v1/chainserver/nodes/xxxx
+    http://localhost:8801/v1/chainserver/blockchain/{chain_id}/nodes/xxxx
    
   ```
   
     ### 查看节点信息
  
- * [route] v1/chainserver/nodes/{node_id}
+ * [route] v1/chainserver/blockchain/{chain_id}/nodes/{node_id}
  
  * [method] get
  
@@ -336,7 +331,7 @@
   ``` 
  * [example] 请求示例
   ```
-    http://localhost:8801/v1/chainserver/nodes/xxxx
+    http://localhost:8801/v1/chainserver/blockchain/{chain_id}/nodes/xxxx
   ``` 
   
  ## 表设计
