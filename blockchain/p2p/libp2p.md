@@ -31,3 +31,9 @@ Libp2p 是一个便于使用者开发去中心化点对点应用的网络框架�
 
 - 充分使用基础传输（例如原生的流复用等）
 
+
+## p2p相关技术博客
+
+ [KAD分布式哈希协议原理](http://www.yeolar.com/note/2010/03/21/kademlia/#id12)
+ 
+ [Chory算法介绍](http://www.yeolar.com/note/2010/04/06/p2p-chord/)
