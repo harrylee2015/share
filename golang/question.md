@@ -61,6 +61,6 @@
   
    [G,M,P模型](https://mp.weixin.qq.com/s/jFBorQ6fRopqmEK1voKGWA) 
 
-8. golang内存模型
+8. golang面试题
 
    [golang interview questions](https://github.com/lifei6671/interview-go)
