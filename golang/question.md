@@ -63,4 +63,4 @@
 
 8. golang内存模型
 
-   [golang interview questions](https://www.cnblogs.com/yulibostu/articles/12056197.html)
+   [golang interview questions](https://github.com/lifei6671/interview-go)
