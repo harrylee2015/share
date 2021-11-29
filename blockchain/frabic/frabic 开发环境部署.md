@@ -325,3 +325,38 @@ export CORE_PEER_ADDRESS=localhost:7051
 
 ```
  
+## 安装链码
+
+```
+
+harry@harry-VirtualBox:~/gopath/src/gitlab.33.cn/link33$  /home/harry/fabric/fabric-samples/bin/peer chaincode install -n broker  -v 1.0 -l golang -p gitlab.33.cn/link33/broker
+2021-11-29 14:50:54.763 CST [chaincodeCmd] checkChaincodeCmdParams -> INFO 001 Using default escc
+2021-11-29 14:50:54.763 CST [chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
+2021-11-29 14:50:55.207 CST [chaincodeCmd] install -> INFO 003 Installed remotely response:<status:200 payload:"OK" > 
+harry@harry-VirtualBox:~/gopath/src/gitlab.33.cn/link33$  /home/harry/fabric/fabric-samples/bin/peer chaincode install -n data_swapper  -v 1.0 -l golang -p gitlab.33.cn/link33/data_swapper
+2021-11-29 15:08:07.678 CST [chaincodeCmd] checkChaincodeCmdParams -> INFO 001 Using default escc
+2021-11-29 15:08:07.678 CST [chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
+2021-11-29 15:08:07.914 CST [chaincodeCmd] install -> INFO 003 Installed remotely response:<status:200 payload:"OK" > 
+
+
+```
+
+
+## 链码初始化及调用示例
+
+```
+# 初始化合约
+
+/home/harry/fabric/fabric-samples/bin/peer chaincode instantiate -o localhost:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA  -C mychannel -n data_swapper  -v 1.0 -c '{"Args":["init"]}' -P "OR ('Org1MSP.peer','Org2MSP.peer')"
+
+# 设置值
+harry@harry-VirtualBox:~/gopath/src/gitlab.33.cn/link33$  /home/harry/fabric/fabric-samples/bin/peer chaincode invoke   -o localhost:7050  --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA  -C mychannel -n data_swapper  -c '{"Args":["set","111111","11111"]}'
+2021-11-29 15:16:52.699 CST [chaincodeCmd] chaincodeInvokeOrQuery -> INFO 001 Chaincode invoke successful. result: status:200 
+
+
+# 查询值
+
+harry@harry-VirtualBox:~/gopath/src/gitlab.33.cn/link33$ /home/harry/fabric/fabric-samples/bin/peer chaincode query   -o localhost:7050  --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA  -C mychannel -n data_swapper  -c '{"Args":["get","111111"]}'
+11111
+
+```
