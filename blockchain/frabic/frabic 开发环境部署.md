@@ -54,7 +54,7 @@ cd gopath/src/github.com/hyperledger/fabric-samples/first-network/
 ## 启动服务
 
 ```
-./byfn.sh up  -i 1.4.4   #用1.4.4镜像，默认采用etcdraft共识
+./byfn.sh up  -i 1.4.4   #用1.4.4镜像，默认采用solo共识
 
 ```
 
@@ -72,7 +72,7 @@ export GOPROXY=https://goproxy.cn,direct
 
 #部署broker合约
 
-peer chaincode install -n broker  ^C 1.0 -l golang -p  gitlab.33.cn/link33/sidecar-client-fabric/example/contracts/src/broker/
+peer chaincode install -n broker  -v 1.0 -l golang -p  gitlab.33.cn/link33/sidecar-client-fabric/example/contracts/src/broker/
 
 #部署data_swapper合约
 peer chaincode install -n data_swapper  -v 1.0 -l golang -p  gitlab.33.cn/link33/sidecar-client-fabric/example/contracts/src/data_swapper
