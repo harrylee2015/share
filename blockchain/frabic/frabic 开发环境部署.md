@@ -360,3 +360,18 @@ harry@harry-VirtualBox:~/gopath/src/gitlab.33.cn/link33$ /home/harry/fabric/fabr
 11111
 
 ```
+
+## 宿主机外客户端 sdk与docker环境交互，只需配置一下宿主机的hosts
+
+```
+比如：各个容器对应的ip可以通过cli容器安装ping工具包，进行探测
+
+172.22.0.4 peer1.org2.example.com
+172.22.0.6 orderer.example.com
+172.22.0.2 peer0.org2.example.com
+172.22.0.3 peer0.org1.example.com
+172.22.0.5 peer1.org1.example.com
+
+
+```
+
