@@ -365,6 +365,9 @@ harry@harry-VirtualBox:~/gopath/src/gitlab.33.cn/link33$ /home/harry/fabric/fabr
 
 ```
 比如：各个容器对应的ip可以通过cli容器安装ping工具包，进行探测
+apt-get install inetutils-ping
+
+.....
 
 172.22.0.4 peer1.org2.example.com
 172.22.0.6 orderer.example.com
