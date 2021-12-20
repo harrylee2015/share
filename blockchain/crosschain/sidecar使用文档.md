@@ -34,9 +34,9 @@ mv  bin/sidecar   $HOME/sidecar/
 
 * [Fabric 1.4环境搭建](Fabric 1.4环境搭建)
 
-* [fabric跨链合约部署及使用](Fabric中跨链合约部署及使用)
+* [fabric 1.4跨链合约的部署及使用](fabric 1.4跨链合约的部署及使用)
 
-* [Fabric插件配置](Fabric插件配置)
+* [Fabric 1.4插件配置](Fabric 1.4插件配置)
 
 
 ## chain33插件环境配置
