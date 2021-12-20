@@ -3,13 +3,13 @@
 ## 准备工作
 
 如果你想在本地或者服务器上运行跨链网关，你需要在机器上安装有以下的依赖：
-
 [golang1.13+](https://go.dev/doc/install)、[packr](https://github.com/gobuffalo/packr)
 
 
 ## 安装和配置
 
 执行下面的命令进行编译sidecar
+
 ```
 export CGO_ENABLED=1  //开启CGO编译功能，sidecar中依赖库会用到c语言库
 
@@ -18,6 +18,7 @@ git clone https://gitlab.33.cn/link33/sidecar
 cd sidecar
 
 make 
+
 ```
 
 ## 创建工作文件sidecar
