@@ -2,6 +2,10 @@
 
 ## java1.8中文文档
   [java8中文文档](https://www.matools.com/api/java8)
+  
+  
+## MongoDB在Spring框架中的使用
+  [关于MongoTemplate的使用](https://juejin.cn/post/7022532575121899533)
 
 ## 开发环境
 
