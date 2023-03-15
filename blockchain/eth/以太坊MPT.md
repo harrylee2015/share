@@ -101,10 +101,10 @@ nibble|nibble含义
 0011/0x3|该节点为叶子节点，并且数据长度为奇数
 
 
-在MPT树上节点存储的数据是原始数据的如下映射：
+* 在MPT树上节点存储的数据是原始数据的如下映射：
 
-Key = sha3(原始数据key)
+`Key = sha3(原始数据key)`
 
-Value = RLP(原始数据Value)
+`Value = RLP(原始数据Value)`
 
 
