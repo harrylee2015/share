@@ -12,13 +12,17 @@ mkdir gopath
 ```
 在/etc/profile中加入环境变量
 ```bash
+#go的安装路径
 export GOROOT=/root/go
+#设置自己go项目存放路径
 export GOPATH=/root/gopath
 export PATH=.:$PATH:$GOROOT/bin:$GOPATH/bin
 #如下两个参数可配，可不配，因为我这里全部使用module模式，所以全加入到环境配置变量中去了
 #中国区代理
 export GOPROXY="https://goproxy.cn,direct"
 export export GO111MODULE=on
+#指向自己的私有库，比如说自己公司的私有库
+export export GOPRIVATE=XXXX
 ```
 配置完之后保存,执行如下命令是变量生效
 ```bash
