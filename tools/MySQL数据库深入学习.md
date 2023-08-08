@@ -96,4 +96,6 @@
 ## 参考资料
 
    [MySQL教程](http://c.biancheng.net/view/7098.html)
+
+   [MySQL高频面试题](https://juejin.cn/post/7126918029060866079)
   
