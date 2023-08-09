@@ -98,4 +98,6 @@
    [MySQL教程](http://c.biancheng.net/view/7098.html)
 
    [MySQL高频面试题](https://juejin.cn/post/7126918029060866079)
+
+   [二叉树、平衡二叉树、红黑树、B树、B+树介绍](https://juejin.cn/post/7032308521400188965)
   
