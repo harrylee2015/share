@@ -49,3 +49,6 @@ HMACSHA256(
   secret)
 ```
 算出签名以后，把 Header、Payload、Signature 三个部分拼成一个字符串，每个部分之间用"点"（.）分隔，就可以返回给用户。
+
+
+## [OAuth2.0介绍](http://www.ruanyifeng.com/blog/2019/04/oauth_design.html)
