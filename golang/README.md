@@ -5,3 +5,5 @@
       
       export GO15VENDOREXPERIMENT=1  #开启vendor版本管理
       export GO111MODULE="off"       #关闭新版本的go mod管理
+
+* [golang 拉取私有仓库项目代码](https://andblog.cn/3002)
