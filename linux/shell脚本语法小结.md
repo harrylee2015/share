@@ -44,7 +44,7 @@ awk -Ftest '{print $2}' test|把text.txt中以test做切割，打印切割后第
 ---|---
 myfile="cat file";eval $myfile|打印file文件内容
 eval "cat <<EOF $(<chain33/chain33.toml) EOF" > tmp.toml | 替换配置文件变量 chain33.toml(chain33.toml中有一些$变量)
-
+envsubst < file.txt > newfile.txt|替换配置文件中环境变量
 
 
 ## **[shell脚本语法备忘录](https://devhints.io/bash)**
