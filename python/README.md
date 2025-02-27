@@ -218,3 +218,69 @@ if __name__ == '__main__':
    
    ```
    
+## poetry 管理 python 项目
+  
+  [poetry](https://python-poetry.org/docs/#installing-with-the-official-installer)
+
+
+
+## Windows 12 中安装 Python 3 的过程与其他 Windows 版本类似。您可以按照以下步骤进行操作：
+
+1. 下载 Python 安装程序：
+
+`前往 Python 官方网站 (https://www.python.org/downloads/)，下载最新的 Python 3 版本的安装程序。在网站上，您会看到各种版本的 Python 3，选择适合您系统的版本（32位或64位）。`
+
+2. 运行安装程序：
+
+`双击下载的 Python 安装程序，打开安装向导。确保选中 "Add Python X.X to PATH"（将 Python 添加到系统环境变量中），这样您就可以在命令行中直接运行 Python。然后点击 "Install Now"（立即安装）。`
+
+3. 等待安装完成：
+
+`安装程序会自动安装 Python，并添加到系统的 PATH 环境变量中。等待安装程序完成安装过程。`
+
+4. 验证安装：
+
+`打开命令提示符 (cmd)，输入 python --version，按下 Enter 键。如果安装成功，会显示 Python 的版本信息。
+
+5. 安装完成：
+
+至此，Python 3 已成功安装在您的 Windows 12 系统上。您可以开始使用 Python 编程了。
+
+* 请注意，如果您需要在 Windows 中安装 Python 的特定版本，可以在 Python 官方网站的下载页面中选择该版本。另外，如果您需要在 Windows 中同时安装多个 Python 版本，可以使用 Python 的虚拟环境工具（如 virtualenv 或 venv）来管理不同版本的 Python。
+
+
+
+## 在 Windows 12 中安装 pip 的步骤与其他 Windows 版本基本相同。以下是安装 pip 的常规步骤：
+
+1. 下载 get-pip.py 脚本：
+
+打开浏览器，前往 https://bootstrap.pypa.io/get-pip.py 右键点击页面上的 "Save link as"（另存为），保存 get-pip.py 脚本到您的计算机上。
+
+2. 打开命令提示符：
+
+在 Windows 12 中，按下 Windows键 + R 打开运行对话框，输入 cmd，然后按下 Enter 键，以打开命令提示符。
+
+3. 运行 get-pip.py 脚本：
+
+在命令提示符中，切换到保存 get-pip.py 脚本的目录。然后输入以下命令并按 Enter 键运行：
+
+4. python get-pip.py
+
+这将运行 get-pip.py 脚本，并自动下载安装 pip。
+
+5. 等待安装完成：
+
+安装过程会自动下载并安装 pip，等待安装完成。
+
+6. 验证安装：
+
+安装完成后，在命令提示符中输入以下命令并按 Enter 键验证 pip 是否成功安装：
+
+pip --version
+
+如果成功安装，会显示 pip 的版本信息。
+
+至此，pip 已成功安装在您的 Windows 12 系统上，您可以使用 pip 来管理 Python 的包和库了。
+
+
+
